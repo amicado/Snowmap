@@ -22,3 +22,7 @@ resource/overviews/*
 
 #Github dump
 *.stackdump
+
+# Eigene ignores
+Git_Befehle.txt
+
