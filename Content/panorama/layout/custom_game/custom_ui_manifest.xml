@@ -1,0 +1,12 @@
+<root>
+	<script>
+        GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_TIMEOFDAY, false );
+        GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_PROTECT,false);
+
+	</script>
+	<Panel>
+		<!-- Use the Valve-authored multi-team-compatible scoreboard, instead of the default Dota 2-team scoreboard. -->
+        <CustomUIElement type="GameInfo"	layoutfile="file://{resources}/layout/custom_game/frostivus_game_info.xml" />
+        <CustomUIElement type="HudTopBar"	layoutfile="file://{resources}/layout/custom_game/frostivus_time.xml" />
+	</Panel>
+</root>
