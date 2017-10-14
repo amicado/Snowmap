@@ -1,0 +1,29 @@
+<root>
+	<styles>
+        <include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/frostivus_game_info.css" />
+	</styles>
+    <Panel class="FrostivusGameInfo">
+		<Panel id="Title">
+			<Label id="TitleName" text="#addonname" />
+		</Panel>
+		
+		<Label id="ObjectiveHeader" class="Header" html="true" text="#frostivus_game_info_header_objective" />
+		<Label id="BriefDescription" text="#frostivus_brief_description" />
+		<Label id="HowToPlayHeader" class="Header" html="true" text="#frostivus_game_info_header_how_to_play" />
+		<Label id="Description" html="true" text="#frostivus_game_info_time" />
+		
+		<Label id="LocationHeader" class="Header" text="#frostivus_game_info_header_location" />
+
+		<Label id="Location1" html="true" text="#frostivus_game_info_location1" />
+		<Image id="LocationImage1" src="file://{images}/custom_game/forest.png" />
+
+		<Label id="Location2" html="true" text="#frostivus_game_info_location2" />
+		<Image id="LocationImage2" src="file://{images}/custom_game/forest.png" />
+
+		<Label id="Location3" html="true" text="#frostivus_game_info_location3" />
+		<Image id="LocationImage3" src="file://{images}/custom_game/forest.png" />
+			
+			
+	</Panel>
+</root>

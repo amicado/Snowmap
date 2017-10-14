@@ -23,6 +23,13 @@ end
 function CAddonTemplateGameMode:InitGameMode()
 	print( "Template addon is loaded." )
 	GameRules:GetGameModeEntity():SetThink( "OnThink", self, "GlobalThink", 2 )
+	--Here we code
+	GameRules:GetGameModeEntity():SetCameraDistanceOverride(2000);
+	GameRules:SetCustomGameEndDelay( 0 )
+	GameRules:SetCustomVictoryMessageDuration( 10 )
+	GameRules:SetPreGameTime( 10 )
+	GameRules:SetStrategyTime( 0.0 )
+	GameRules:SetShowcaseTime( 0.0 )
 end
 
 -- Evaluate the state of the game

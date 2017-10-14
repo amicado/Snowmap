@@ -1,0 +1,15 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/frostivus_time.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/frostivus_time.js" />
+	</scripts>
+	<Panel class="TimePanel">
+		<Label id="Goal" text="December" />
+		<Label id="VictoryPoints" text="1st" />
+		<Label id="Timer" text="--:--" />
+	</Panel>
+</root>
+
