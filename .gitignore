@@ -25,4 +25,5 @@ resource/overviews/*
 
 # Eigene ignores
 Git_Befehle.txt
+.vscode
 
