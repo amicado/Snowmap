@@ -1,6 +1,13 @@
 .TimePanel
 {
-
-    flow-children: down-wrap;
     horizontal-align: middle;
+    
+}
+Label{
+    text-align: center;
+    color: lightblue;
+    horizontal-align: middle;
+    font-family: "Times New Roman", Times;
+    
+    
 }

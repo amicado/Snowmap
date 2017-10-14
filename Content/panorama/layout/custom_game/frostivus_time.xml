@@ -9,7 +9,7 @@
 	<Panel class="TimePanel">
 		<Label id="Goal" text="December" />
 		<Label id="VictoryPoints" text="1st" />
-		<Label id="Timer" text="--:--" />
+		<Label id="Timer" text="03:00" />
 	</Panel>
 </root>
 

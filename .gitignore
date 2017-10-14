@@ -18,9 +18,8 @@
 *.vpk
 
 # Map overviews
-resource/overviews/*
-
-Content/materials/overviews
+Game/resource/overviews/*
+Content/materials/overviews/*
 
 #Github dump
 *.stackdump
