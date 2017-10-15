@@ -2,7 +2,7 @@
 
 _G.COUNTDOWNTIMERVALUE = 16
 _G.nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
-_G.currentDay = 1
+_G.currentDay = 0
 
 if CAddonTemplateGameMode == nil then
 	CAddonTemplateGameMode = class({})
@@ -36,15 +36,19 @@ function CAddonTemplateGameMode:InitGameMode()
 	GameRules:GetGameModeEntity():SetCameraDistanceOverride(2000);
 	GameRules:SetCustomGameEndDelay( 0 )
 	GameRules:SetCustomVictoryMessageDuration( 10 )
-	GameRules:SetPreGameTime( 5 )
+	GameRules:SetPreGameTime( 10 )
 	GameRules:SetStrategyTime( 0.0 )
 	GameRules:SetShowcaseTime( 0.0 )
 end
 
 -- Evaluate the state of the game
 function CAddonTemplateGameMode:OnThink()
-	
 	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+		if currentDay == 0 then
+			currentDay = 1
+			CustomGameEventManager:Send_ServerToAllClients( "update_day", {day = currentDay} )
+			CustomGameEventManager:Send_ServerToAllClients( "update_notification", {day = currentDay} )
+		end
 		CountdownTimer()
 	elseif GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
 		return nil

@@ -26,6 +26,7 @@ function CountdownTimer()
 	    nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 		CustomGameEventManager:Send_ServerToAllClients( "update_day", {day = currentDay} )
 		CustomGameEventManager:Send_ServerToAllClients( "timer_alert", {isTrue=false} )
+        CustomGameEventManager:Send_ServerToAllClients( "update_notification", {day = currentDay} )
     end
 end
 

@@ -1,0 +1,12 @@
+.NotificationPanel
+{
+    horizontal-align: middle;
+    y:100px;
+    
+}
+.Notification{
+    color: gold;
+    font-size: 42px;
+    font-weight: bold;
+    horizontal-align: center;  
+}
