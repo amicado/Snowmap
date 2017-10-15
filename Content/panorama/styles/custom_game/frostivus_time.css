@@ -1,13 +1,20 @@
 .TimePanel
 {
     horizontal-align: middle;
+    flow-children: down-wrap;
+    background-image: url("file://{images}/custom_game/timer.psd");
+    background-repeat: no-repeat;
+    background-size: 100% 120%;
+    padding: 5px;
     
 }
 Label{
     text-align: center;
-    color: lightblue;
+    color: purple;
     horizontal-align: middle;
     font-family: "Times New Roman", Times;
-    
-    
+    font-weight: bold;    
+}
+.timer_alert{
+    color: red;
 }

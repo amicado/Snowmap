@@ -1,8 +1,17 @@
 -- Generated from template
 
+_G.COUNTDOWNTIMERVALUE = 16
+_G.nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
+_G.currentDay = 1
+
 if CAddonTemplateGameMode == nil then
 	CAddonTemplateGameMode = class({})
 end
+
+---------------------------------------------------------------------------
+-- Required .lua files
+---------------------------------------------------------------------------
+require( "utility_functions" )
 
 function Precache( context )
 	--[[
@@ -27,15 +36,16 @@ function CAddonTemplateGameMode:InitGameMode()
 	GameRules:GetGameModeEntity():SetCameraDistanceOverride(2000);
 	GameRules:SetCustomGameEndDelay( 0 )
 	GameRules:SetCustomVictoryMessageDuration( 10 )
-	GameRules:SetPreGameTime( 10 )
+	GameRules:SetPreGameTime( 5 )
 	GameRules:SetStrategyTime( 0.0 )
 	GameRules:SetShowcaseTime( 0.0 )
 end
 
 -- Evaluate the state of the game
 function CAddonTemplateGameMode:OnThink()
+	
 	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-		--print( "Template addon script is running." )
+		CountdownTimer()
 	elseif GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
 		return nil
 	end
