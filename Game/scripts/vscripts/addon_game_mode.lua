@@ -39,6 +39,7 @@ function CAddonTemplateGameMode:InitGameMode()
 	GameRules:SetPreGameTime( 10 )
 	GameRules:SetStrategyTime( 0.0 )
 	GameRules:SetShowcaseTime( 0.0 )
+	GameRules:SetStartingGold(10000)
 end
 
 -- Evaluate the state of the game
