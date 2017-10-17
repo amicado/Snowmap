@@ -43,11 +43,11 @@ end
 
 function spawnRoshan()
     local point1 = Entities:FindByName( nil, "santa_spawn_radiant"):GetAbsOrigin()
-    local unit1 = CreateUnitByName("npc_dota_roshan", point1, true, nil, nil, DOTA_TEAM_GOODGUYS)
+    local unit1 = CreateUnitByName("npc_dota_creature_mini_roshan", point1, true, nil, nil, DOTA_TEAM_GOODGUYS)
     
 
     local point2 = Entities:FindByName( nil, "santa_spawn_dire"):GetAbsOrigin()
-    local unit2 = CreateUnitByName("npc_dota_roshan", point2, true, nil, nil, DOTA_TEAM_BADGUYS)
+    local unit2 = CreateUnitByName("npc_dota_creature_mini_roshan", point2, true, nil, nil, DOTA_TEAM_BADGUYS)
 
     ClearTeamCustomHealthbarColor(2)
     ClearTeamCustomHealthbarColor(3)
