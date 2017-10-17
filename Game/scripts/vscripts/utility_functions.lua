@@ -1,12 +1,6 @@
 --[[ utility_functions.lua ]]
 
 function CountdownTimer()
-    if currentDay == 0 then
-		currentDay = 1
-		print("Changing day to "..currentDay)
-		CustomGameEventManager:Send_ServerToAllClients( "update_day", {day = currentDay} )
-        CustomGameEventManager:Send_ServerToAllClients( "update_notification", {day = currentDay} )
-	end
     nCOUNTDOWNTIMER = nCOUNTDOWNTIMER - 1
     local t = nCOUNTDOWNTIMER
     --print( t )
@@ -49,8 +43,5 @@ function spawnRoshan()
     local point2 = Entities:FindByName( nil, "santa_spawn_dire"):GetAbsOrigin()
     local unit2 = CreateUnitByName("npc_dota_creature_mini_roshan", point2, true, nil, nil, DOTA_TEAM_BADGUYS)
 
-    ClearTeamCustomHealthbarColor(2)
-    ClearTeamCustomHealthbarColor(3)
-    ClearTeamCustomHealthbarColor(0)
-    ClearTeamCustomHealthbarColor(1)
+    
 end
