@@ -1,7 +1,7 @@
 function UpdateNotification(data)
 {
     if(data.day == 1){
-        SetNotification("#frostivus_game_objective_mountain");
+        SetNotification("#frostivus_game_objective_mountain");    
     }else if(data.day == 9){
         SetNotification("#frostivus_game_objective_forest");
     }else if(data.day == 17){
