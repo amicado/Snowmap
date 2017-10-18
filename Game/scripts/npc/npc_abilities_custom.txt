@@ -2,13 +2,4 @@
 "DOTAAbilities"
 {
 	"Version"		"1"
-
-	"roshan_celebrate"
-	{
-		"BaseClass"							"ability_datadriven"
-		"AbilityName"						"roshan_celebrate"
-		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityCastAnimation"				"ACT_DOTA_FLAIL"
-		"AnimationPlaybackRate" 			"0.1"
-	}
 }

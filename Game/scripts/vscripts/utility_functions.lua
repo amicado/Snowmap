@@ -1,6 +1,9 @@
 --[[ utility_functions.lua ]]
 
 function CountdownTimer()
+    if nCOUNTDOWNTIMER == COUNTDOWNTIMERVALUE then
+        CustomGameEventManager:Send_ServerToAllClients( "start_timer", {} )
+    end
     nCOUNTDOWNTIMER = nCOUNTDOWNTIMER - 1
     local t = nCOUNTDOWNTIMER
     --print( t )
@@ -32,6 +35,7 @@ function CountdownTimer()
 		CustomGameEventManager:Send_ServerToAllClients( "timer_alert", {isTrue=false} )
         CustomGameEventManager:Send_ServerToAllClients( "update_notification", {day = currentDay} )
     end
+    
     CustomGameEventManager:Send_ServerToAllClients( "countdown", broadcast_gametimer )
 end
 

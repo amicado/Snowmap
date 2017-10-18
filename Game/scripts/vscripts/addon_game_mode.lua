@@ -1,6 +1,6 @@
 -- Generated from template
 
-_G.COUNTDOWNTIMERVALUE = 300
+_G.COUNTDOWNTIMERVALUE = 30
 _G.nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 _G.currentDay = 0
 roshan_radiant = nil;
@@ -42,7 +42,7 @@ function FrostivusGameMode:InitGameMode()
 	GameRules:GetGameModeEntity():SetCameraDistanceOverride(1500);
 	GameRules:SetCustomGameEndDelay( 0 )
 	GameRules:SetCustomVictoryMessageDuration( 10 )
-	GameRules:SetPreGameTime( 10 )
+	GameRules:SetPreGameTime( 5 )
 	GameRules:SetStrategyTime( 0.0 )
 	GameRules:SetShowcaseTime( 0.0 )
 	GameRules:SetStartingGold(10000)
@@ -69,25 +69,18 @@ function FrostivusGameMode:OnEntityKilled( event )
 	if killedUnit:GetUnitName() == "npc_dota_creature_mini_roshan" then
 		if killedUnit:GetTeam() == DOTA_TEAM_GOODGUYS then
 			-- dire won
-			local celebrate = self.roshan_dire:FindAbilityByName( 'roshan_celebrate' )
-			if celebrate then
-				print("Casting celebrate")
-				self.roshan_dire:CastAbilityNoTarget( celebrate, -1 )
-			end
+			self.roshan_dire:StartGestureWithPlaybackRate(ACT_DOTA_FLAIL,3)
 			FrostivusGameMode:EndGame(DOTA_TEAM_BADGUYS)
 			
 		elseif killedUnit:GetTeam() == DOTA_TEAM_BADGUYS then
 			--radiant won
-			local celebrate = self.roshan_radiant:FindAbilityByName( 'roshan_celebrate' )
-			if celebrate then
-				print("Casting celebrate")
-				self.roshan_radiant:CastAbilityNoTarget( celebrate, -1 )
-			end
+			self.roshan_radiant:StartGestureWithPlaybackRate(ACT_DOTA_FLAIL,3)
 			FrostivusGameMode:EndGame(DOTA_TEAM_GOODGUYS)
 			
 		end
 		--self:_AwardPoints( self._currentRound:GetPointReward() )
-		--self:_Victory()
+		--self:_Victory()	
+		
 	end
 end
 
@@ -101,6 +94,7 @@ function FrostivusGameMode:OnGameRulesStateChange()
 	if nNewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
 		--print( "OnGameRulesStateChange: Game In Progress" )
 		IncreaseDay()
+		print("Changing day to "..currentDay)
 		CustomGameEventManager:Send_ServerToAllClients( "update_day", {day = currentDay} )
         CustomGameEventManager:Send_ServerToAllClients( "update_notification", {day = currentDay} )
 	end
