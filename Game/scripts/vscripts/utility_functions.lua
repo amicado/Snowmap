@@ -22,10 +22,10 @@ function CountdownTimer()
         CustomGameEventManager:Send_ServerToAllClients( "timer_alert", {isTrue=true} )
     end
     if t <= 0 then
-        currentDay = currentDay+1;
+        IncreaseDay()
         print("Changing day to "..currentDay.." in countdown")
         if currentDay == 2 then
-            spawnRoshan() 
+            FrostivusGameMode:SpawnRoshan() 
         end
 	    nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 		CustomGameEventManager:Send_ServerToAllClients( "update_day", {day = currentDay} )
@@ -35,13 +35,7 @@ function CountdownTimer()
     CustomGameEventManager:Send_ServerToAllClients( "countdown", broadcast_gametimer )
 end
 
-function spawnRoshan()
-    local point1 = Entities:FindByName( nil, "santa_spawn_radiant"):GetAbsOrigin()
-    local unit1 = CreateUnitByName("npc_dota_creature_mini_roshan", point1, true, nil, nil, DOTA_TEAM_GOODGUYS)
-    
-
-    local point2 = Entities:FindByName( nil, "santa_spawn_dire"):GetAbsOrigin()
-    local unit2 = CreateUnitByName("npc_dota_creature_mini_roshan", point2, true, nil, nil, DOTA_TEAM_BADGUYS)
-
-    
+function IncreaseDay()
+    currentDay = currentDay+1;
 end
+

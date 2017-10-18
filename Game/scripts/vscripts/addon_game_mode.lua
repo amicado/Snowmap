@@ -1,8 +1,10 @@
 -- Generated from template
 
-_G.COUNTDOWNTIMERVALUE = 16
+_G.COUNTDOWNTIMERVALUE = 300
 _G.nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 _G.currentDay = 0
+roshan_radiant = nil;
+roshan_dire = nil;
 
 if FrostivusGameMode == nil then
 	FrostivusGameMode = class({})
@@ -35,6 +37,8 @@ function FrostivusGameMode:InitGameMode()
 	print( "Template addon is loaded." )
 	GameRules:GetGameModeEntity():SetThink( "OnThink", self, "GlobalThink", 2 )
 	--Here we code
+	GameRules:SetCustomGameEndDelay( 0 )
+	GameRules:SetCustomVictoryMessageDuration( 10 )
 	GameRules:GetGameModeEntity():SetCameraDistanceOverride(1500);
 	GameRules:SetCustomGameEndDelay( 0 )
 	GameRules:SetCustomVictoryMessageDuration( 10 )
@@ -65,10 +69,22 @@ function FrostivusGameMode:OnEntityKilled( event )
 	if killedUnit:GetUnitName() == "npc_dota_creature_mini_roshan" then
 		if killedUnit:GetTeam() == DOTA_TEAM_GOODGUYS then
 			-- dire won
+			local celebrate = self.roshan_dire:FindAbilityByName( 'roshan_celebrate' )
+			if celebrate then
+				print("Casting celebrate")
+				self.roshan_dire:CastAbilityNoTarget( celebrate, -1 )
+			end
 			FrostivusGameMode:EndGame(DOTA_TEAM_BADGUYS)
+			
 		elseif killedUnit:GetTeam() == DOTA_TEAM_BADGUYS then
 			--radiant won
+			local celebrate = self.roshan_radiant:FindAbilityByName( 'roshan_celebrate' )
+			if celebrate then
+				print("Casting celebrate")
+				self.roshan_radiant:CastAbilityNoTarget( celebrate, -1 )
+			end
 			FrostivusGameMode:EndGame(DOTA_TEAM_GOODGUYS)
+			
 		end
 		--self:_AwardPoints( self._currentRound:GetPointReward() )
 		--self:_Victory()
@@ -76,15 +92,6 @@ function FrostivusGameMode:OnEntityKilled( event )
 end
 
 function FrostivusGameMode:EndGame( victoryTeam )
-	local roshan = Entities:FindByName( nil, "npc_dota_creature_mini_roshan" )
-	if roshan then
-		local celebrate = roshan:FindAbilityByName( 'dota_ability_celebrate' )
-		if celebrate then
-			roshan:CastAbilityNoTarget( celebrate, -1 )
-		end
-	end
-	print( "SetGameWinner "..victoryTeam )
-
 	GameRules:SetGameWinner( victoryTeam )
 end
 
@@ -93,9 +100,18 @@ function FrostivusGameMode:OnGameRulesStateChange()
 	--print( "OnGameRulesStateChange: " .. nNewState )
 	if nNewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
 		--print( "OnGameRulesStateChange: Game In Progress" )
-		currentDay = 1
-		print("Changing day to "..currentDay)
+		IncreaseDay()
 		CustomGameEventManager:Send_ServerToAllClients( "update_day", {day = currentDay} )
         CustomGameEventManager:Send_ServerToAllClients( "update_notification", {day = currentDay} )
 	end
+end
+
+function FrostivusGameMode:SpawnRoshan()
+    local point1 = Entities:FindByName( nil, "santa_spawn_radiant"):GetAbsOrigin()
+    self.roshan_radiant = CreateUnitByName("npc_dota_creature_mini_roshan", point1, true, nil, nil, DOTA_TEAM_GOODGUYS)
+    
+
+    local point2 = Entities:FindByName( nil, "santa_spawn_dire"):GetAbsOrigin()
+    self.roshan_dire = CreateUnitByName("npc_dota_creature_mini_roshan", point2, true, nil, nil, DOTA_TEAM_BADGUYS)
+	
 end
