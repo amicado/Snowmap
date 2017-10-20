@@ -10,7 +10,7 @@
             "reference_operator"
             {
                 "operator"              "sos_reference_stack"
-                "reference_stack"       "dota_src1_3d"
+                "reference_stack"       "dota_update_default"
                 "operator_variables"
                 {
                     "vsnd_files"
