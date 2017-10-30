@@ -1,6 +1,6 @@
 -- Generated from template
 
-_G.COUNTDOWNTIMERVALUE = 30
+_G.COUNTDOWNTIMERVALUE = 300
 _G.nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 _G.currentDay = 0
 roshan_radiant = nil;
@@ -15,6 +15,7 @@ end
 -- Required .lua files
 ---------------------------------------------------------------------------
 require( "utility_functions" )
+require( "entity_functions" )
 --require( "events" )
 
 function Precache( context )
