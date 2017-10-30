@@ -15,8 +15,20 @@ end
 -- Required .lua files
 ---------------------------------------------------------------------------
 require( "utility_functions" )
-require( "entity_functions" )
+--require( "entity_functions" )
 --require( "events" )
+
+function Trigger_Sound(trigger)
+	print (PlayerResource:GetGold(0))
+    print (trigger.activator:GetOwner():GetPlayerID())
+    --EmitAnnouncerSoundForPlayer("dsadowski_01.music.battle_01",trigger.activator:GetOwner():GetPlayerID());
+    --trigger.caller:EmitSound("Courier.Spawn");
+    --EmitAnnouncerSound("frostivus_awaits_you")
+	--StartSoundEvent("frostivus_awaits_you",trigger.activator:GetOwner())
+	--EmitSoundOn("frostivus_awaits_you",trigger.activator:GetOwner())
+	EmitSoundOnClient("frostivus_awaits_you",PlayerResource:GetPlayer(0));
+	--EmitAnnouncerSoundForPlayer("frostivus_awaits_you",0)
+end
 
 function Precache( context )
 
