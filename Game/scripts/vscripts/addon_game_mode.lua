@@ -1,6 +1,6 @@
 -- Generated from template
 
-_G.COUNTDOWNTIMERVALUE = 300
+_G.COUNTDOWNTIMERVALUE = 3
 _G.nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 _G.currentDay = 0
 roshan_radiant = nil;
@@ -92,10 +92,10 @@ end
 function FrostivusGameMode:OnGameRulesStateChange()
 	local nNewState = GameRules:State_Get()
 	--print( "OnGameRulesStateChange: " .. nNewState )
-	if nNewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+	if (nNewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS and currentDay == 0) then
 		--print( "OnGameRulesStateChange: Game In Progress" )
 		IncreaseDay()
-		print("Changing day to "..currentDay)
+		print("OnGameRulesStateChange Changing day to "..currentDay)
 		CustomGameEventManager:Send_ServerToAllClients( "update_day", {day = currentDay} )
         CustomGameEventManager:Send_ServerToAllClients( "update_notification", {day = currentDay} )
 	end

@@ -26,7 +26,7 @@ function CountdownTimer()
     end
     if t <= 0 then
         IncreaseDay()
-        print("Changing day to "..currentDay.." in countdown")
+        print("CountdownTimer Changing day to "..currentDay.." in countdown")
         if currentDay == 2 then
             FrostivusGameMode:SpawnRoshan() 
         end
