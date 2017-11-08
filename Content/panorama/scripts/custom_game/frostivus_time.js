@@ -40,10 +40,10 @@ function AlertTimer( data )
 }
 
 function TimerOver(){
-	$.GetContextPanel().AddClass( "timer_over" );
+	//$.GetContextPanel().AddClass( "timer_over" );
 }
 function StartTimer(){
-	$.GetContextPanel().RemoveClass( "timer_over" );
+	//$.GetContextPanel().RemoveClass( "timer_over" );
 }
 
 function UpdateDay(data)
