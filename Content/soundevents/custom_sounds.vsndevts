@@ -21,12 +21,8 @@
                         }
                     }
                     "volume"            {   "value"     "10.00000"  }
-                    "pitch_rand_min"    {   "value"     "0"  }
-                    "pitch_rand_max"    {   "value"     "0"  }
-                    "pitch"             {   "value"     "1.000000"  }
                     "soundlevel"        {   "value"     "100.00000" }
-                    "distance_max"      {   "value"     "200000.000"  }
-                    "event_type"        {   "value"     "1.000000"  }
+                    "chan_type"         {   "value"     "6"         }
                 }
             }
         }
