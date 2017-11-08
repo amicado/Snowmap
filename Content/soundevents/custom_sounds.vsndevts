@@ -20,9 +20,38 @@
                               "value0"        "sounds/frostivus_awaits_you.vsnd"
                         }
                     }
-                    "volume"            {   "value"     "10.00000"  }
-                    "soundlevel"        {   "value"     "100.00000" }
-                    "chan_type"         {   "value"     "6"         }
+                   "volume_min"
+                    {
+                        "value"     "100.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"     "100.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"     "1.000000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"     "1.000000"
+                    }
+                    "chan_type"
+                    {
+                        "value"     "6"
+                    }
+                    "memory_type"
+                    {
+                        "value"     "0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"     "100.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"     "100.000000"
+                    }
                 }
             }
         }
