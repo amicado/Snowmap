@@ -1,6 +1,6 @@
 -- Generated from template
 
-_G.COUNTDOWNTIMERVALUE = 30
+_G.COUNTDOWNTIMERVALUE = 5
 _G.nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 _G.currentDay = 0
 roshan_radiant = nil;
@@ -41,8 +41,6 @@ function FrostivusGameMode:InitGameMode()
 	GameRules:SetCustomGameEndDelay( 0 )
 	GameRules:SetCustomVictoryMessageDuration( 10 )
 	GameRules:GetGameModeEntity():SetCameraDistanceOverride(1500);
-	GameRules:SetCustomGameEndDelay( 0 )
-	GameRules:SetCustomVictoryMessageDuration( 10 )
 	GameRules:SetPreGameTime( 5 )
 	GameRules:SetStrategyTime( 0.0 )
 	GameRules:SetShowcaseTime( 0.0 )
@@ -62,7 +60,21 @@ function FrostivusGameMode:OnThink()
 	return 1
 end
 
+function FrostivusGameMode:UpdateScoreboard()
+	print("Updating scoreboard");
+
+	-- Scaleform UI Scoreboard
+	local score = 
+	{
+		time_present = "123",
+		time_snowman= "123",
+		time_tree = "123"
+	}
+	FireGameEvent( "end_screen", {score} )
+end
+
 function FrostivusGameMode:OnEntityKilled( event )
+	--FrostivusGameMode:UpdateScoreboard();
 	local attackerUnit = EntIndexToHScript( event.entindex_attacker or -1 )
 	local killedUnit = EntIndexToHScript( event.entindex_killed )
 
@@ -86,7 +98,15 @@ function FrostivusGameMode:OnEntityKilled( event )
 end
 
 function FrostivusGameMode:EndGame( victoryTeam )
+	if victoryTeam == DOTA_TEAM_GOODGUYS then
+		GameRules:SetCustomVictoryMessage( "Team Snowleopard won!");
+	else
+		GameRules:SetCustomVictoryMessage( "Team Owl won!");
+	end	
+	FrostivusGameMode:UpdateScoreboard();
 	GameRules:SetGameWinner( victoryTeam )
+	
+	
 end
 
 function FrostivusGameMode:OnGameRulesStateChange()
@@ -98,6 +118,22 @@ function FrostivusGameMode:OnGameRulesStateChange()
 		print("OnGameRulesStateChange Changing day to "..currentDay)
 		CustomGameEventManager:Send_ServerToAllClients( "update_day", {day = currentDay} )
         CustomGameEventManager:Send_ServerToAllClients( "update_notification", {day = currentDay} )
+	elseif nNewState == DOTA_GAMERULES_STATE_STRATEGY_TIME then
+		--Add Instruction Panel call here
+		FrostivusGameMode:ForceAssignHeroes()
+	end
+end
+
+function FrostivusGameMode:ForceAssignHeroes()
+	print( "ForceAssignHeroes()" )
+	for nPlayerID = 0, ( DOTA_MAX_TEAM_PLAYERS - 1 ) do
+		if PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_GOODGUYS or PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_BADGUYS then
+			local hPlayer = PlayerResource:GetPlayer( nPlayerID )
+			if hPlayer and not PlayerResource:HasSelectedHero( nPlayerID ) then
+				print( "  Hero selection time is over: forcing nPlayerID " .. nPlayerID .. " to random a hero." )
+				hPlayer:MakeRandomHeroSelection()
+			end
+		end
 	end
 end
 
