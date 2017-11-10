@@ -3,8 +3,8 @@
 _G.COUNTDOWNTIMERVALUE = 5
 _G.nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 _G.currentDay = 0
-roshan_radiant = nil;
-roshan_dire = nil;
+_G.roshan_radiant = nil;
+_G.roshan_dire = nil;
 
 if FrostivusGameMode == nil then
 	FrostivusGameMode = class({})
@@ -16,6 +16,7 @@ end
 ---------------------------------------------------------------------------
 require( "utility_functions" )
 require( "entity_functions" )
+require ( "scores")
 --require( "events" )
 
 function Precache( context )
@@ -46,6 +47,7 @@ function FrostivusGameMode:InitGameMode()
 	GameRules:SetShowcaseTime( 0.0 )
 	GameRules:SetStartingGold(10000)
 
+	CustomGameEventManager:RegisterListener( "endscreen_request_data", Dynamic_Wrap(FrostivusGameMode, "EndScreenRequestData"))
 	ListenToGameEvent( "entity_killed", Dynamic_Wrap( FrostivusGameMode, 'OnEntityKilled' ), self )
 	ListenToGameEvent( "game_rules_state_change", Dynamic_Wrap( FrostivusGameMode, 'OnGameRulesStateChange' ), self )
 end
@@ -60,18 +62,18 @@ function FrostivusGameMode:OnThink()
 	return 1
 end
 
-function FrostivusGameMode:UpdateScoreboard()
-	print("Updating scoreboard");
 
-	-- Scaleform UI Scoreboard
-	local score = 
-	{
-		time_present = "123",
-		time_snowman= "123",
-		time_tree = "123"
-	}
-	FireGameEvent( "end_screen", {score} )
+function FrostivusGameMode:EndScreenRequestData()
+	print("EndScreenRequestData");
+	for playerID = 0, ( DOTA_MAX_TEAM_PLAYERS-1 ) do
+		if PlayerResource:GetTeam( playerID ) == DOTA_TEAM_GOODGUYS or PlayerResource:GetTeam( playerID ) == DOTA_TEAM_BADGUYS then
+			local info_table = GetPlayerScores( playerID )
+			CustomGameEventManager:Send_ServerToAllClients("end_screen", {key=playerID, table=info_table})
+		end
+	end
+	CustomGameEventManager:Send_ServerToAllClients("end_screen", {key="gameData", table=GetGameScores()})
 end
+
 
 function FrostivusGameMode:OnEntityKilled( event )
 	--FrostivusGameMode:UpdateScoreboard();
@@ -82,12 +84,12 @@ function FrostivusGameMode:OnEntityKilled( event )
 	if killedUnit:GetUnitName() == "npc_dota_creature_mini_roshan" then
 		if killedUnit:GetTeam() == DOTA_TEAM_GOODGUYS then
 			-- dire won
-			self.roshan_dire:StartGestureWithPlaybackRate(ACT_DOTA_FLAIL,3)
+			roshan_dire:StartGestureWithPlaybackRate(ACT_DOTA_FLAIL,3)
 			FrostivusGameMode:EndGame(DOTA_TEAM_BADGUYS)
 			
 		elseif killedUnit:GetTeam() == DOTA_TEAM_BADGUYS then
 			--radiant won
-			self.roshan_radiant:StartGestureWithPlaybackRate(ACT_DOTA_FLAIL,3)
+			roshan_radiant:StartGestureWithPlaybackRate(ACT_DOTA_FLAIL,3)
 			FrostivusGameMode:EndGame(DOTA_TEAM_GOODGUYS)
 			
 		end
@@ -103,7 +105,7 @@ function FrostivusGameMode:EndGame( victoryTeam )
 	else
 		GameRules:SetCustomVictoryMessage( "Team Owl won!");
 	end	
-	FrostivusGameMode:UpdateScoreboard();
+	--FrostivusGameMode:UpdateScoreboard();
 	GameRules:SetGameWinner( victoryTeam )
 	
 	
@@ -139,10 +141,10 @@ end
 
 function FrostivusGameMode:SpawnRoshan()
     local point1 = Entities:FindByName( nil, "santa_spawn_radiant"):GetAbsOrigin()
-    self.roshan_radiant = CreateUnitByName("npc_dota_creature_mini_roshan", point1, true, nil, nil, DOTA_TEAM_GOODGUYS)
+    _G.roshan_radiant = CreateUnitByName("npc_dota_creature_mini_roshan", point1, true, nil, nil, DOTA_TEAM_GOODGUYS)
     
 
     local point2 = Entities:FindByName( nil, "santa_spawn_dire"):GetAbsOrigin()
-    self.roshan_dire = CreateUnitByName("npc_dota_creature_mini_roshan", point2, true, nil, nil, DOTA_TEAM_BADGUYS)
+    _G.roshan_dire = CreateUnitByName("npc_dota_creature_mini_roshan", point2, true, nil, nil, DOTA_TEAM_BADGUYS)
 	
 end
