@@ -27,32 +27,28 @@
 					<Panel id="GoodGuy0" class="PlayerData">
 						<DOTAHeroImage class="PlayerHeroImage" heroimagestyle="landscape"/>
 						<DOTAUserName />
-						<Label />
-						<DOTAAvatarImage />					
+						<Label />				
 					</Panel>
 					<Panel id="GoodGuy1" class="PlayerData">
 						<DOTAHeroImage class="PlayerHeroImage" heroimagestyle="landscape"/>
 						<DOTAUserName />
-						<Label />
-						<DOTAAvatarImage />					
+						<Label />			
 					</Panel>
 					<Panel id="GoodGuy2" class="PlayerData">
 						<DOTAHeroImage class="PlayerHeroImage" heroimagestyle="landscape"/>
 						<DOTAUserName />
-						<Label />
-						<DOTAAvatarImage />					
+						<Label />			
 					</Panel>
 					<Panel id="GoodGuy3" class="PlayerData">
 						<DOTAHeroImage class="PlayerHeroImage" heroimagestyle="landscape"/>
 						<DOTAUserName />
 						<Label />
-						<DOTAAvatarImage />					
+				
 					</Panel>
 					<Panel id="GoodGuy4" class="PlayerData">
 						<DOTAHeroImage class="PlayerHeroImage" heroimagestyle="landscape"/>
 						<DOTAUserName />
-						<Label />
-						<DOTAAvatarImage />					
+						<Label />				
 					</Panel>
 				</Panel>
 			</Panel>
@@ -65,32 +61,27 @@
 					<Panel id="BadGuy0" class="PlayerData">
 						<DOTAHeroImage class="PlayerHeroImage"/>
 						<DOTAUserName />
-						<Label />
-						<DOTAAvatarImage />					
+						<Label />				
 					</Panel>
 					<Panel id="BadGuy1" class="PlayerData">
 						<DOTAHeroImage class="PlayerHeroImage" heroimagestyle="landscape"/>
 						<DOTAUserName />
-						<Label />
-						<DOTAAvatarImage />					
+						<Label />				
 					</Panel>
 					<Panel id="BadGuy2" class="PlayerData">
 						<DOTAHeroImage class="PlayerHeroImage" heroimagestyle="landscape"/>
 						<DOTAUserName />
 						<Label />
-						<DOTAAvatarImage />					
 					</Panel>
 					<Panel id="BadGuy3" class="PlayerData">
 						<DOTAHeroImage class="PlayerHeroImage" heroimagestyle="landscape"/>
 						<DOTAUserName />
-						<Label />
-						<DOTAAvatarImage />					
+						<Label />				
 					</Panel>
 					<Panel id="BadGuy4" class="PlayerData">
 						<DOTAHeroImage class="PlayerHeroImage" heroimagestyle="landscape"/>
 						<DOTAUserName />
-						<Label />
-						<DOTAAvatarImage />					
+						<Label />				
 					</Panel>
 				</Panel>
 			</Panel>
