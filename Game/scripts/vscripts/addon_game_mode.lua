@@ -3,8 +3,10 @@
 _G.COUNTDOWNTIMERVALUE = 5
 _G.nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 _G.currentDay = 0
-_G.roshan_radiant = nil;
-_G.roshan_dire = nil;
+roshan_radiant = nil;
+roshan_dire = nil;
+
+_G.WINNER = nil;
 
 if FrostivusGameMode == nil then
 	FrostivusGameMode = class({})
@@ -106,6 +108,7 @@ function FrostivusGameMode:EndGame( victoryTeam )
 		GameRules:SetCustomVictoryMessage( "Team Owl won!");
 	end	
 	--FrostivusGameMode:UpdateScoreboard();
+	_G.WINNER = victoryTeam;
 	GameRules:SetGameWinner( victoryTeam )
 	
 	
@@ -141,10 +144,10 @@ end
 
 function FrostivusGameMode:SpawnRoshan()
     local point1 = Entities:FindByName( nil, "santa_spawn_radiant"):GetAbsOrigin()
-    _G.roshan_radiant = CreateUnitByName("npc_dota_creature_mini_roshan", point1, true, nil, nil, DOTA_TEAM_GOODGUYS)
+    roshan_radiant = CreateUnitByName("npc_dota_creature_mini_roshan", point1, true, nil, nil, DOTA_TEAM_GOODGUYS)
     
 
     local point2 = Entities:FindByName( nil, "santa_spawn_dire"):GetAbsOrigin()
-    _G.roshan_dire = CreateUnitByName("npc_dota_creature_mini_roshan", point2, true, nil, nil, DOTA_TEAM_BADGUYS)
+    roshan_dire = CreateUnitByName("npc_dota_creature_mini_roshan", point2, true, nil, nil, DOTA_TEAM_BADGUYS)
 	
 end

@@ -10,27 +10,90 @@
 	<Panel class="EndScreenRoot">
 		<Panel class="EndScreenWindow">
 			<Panel id="Legend" class="Legend">
-                <Label text="Team" />
+                <Label text="Team" class="TeamTitle"/>
 				<Image id="PresentImage" class="ScoreImage" src="file://{images}/custom_game/present.jpg" />
                 <Image id="SnowmanImage" class="ScoreImage" src="file://{images}/custom_game/snowman.jpg" />
                 <Image id="TreeImage" class="ScoreImage" src="file://{images}/custom_game/tree.jpg" />
+				<Label text="Stats" class="StatsTitle"/>
 				<!--Label class="LegendPanel ScoreCol_Items" text="#custom_end_screen_legend_items" /-->
 				<!--Label class="LegendPanel ScoreCol_Gold" text="#custom_end_screen_legend_gold" /-->
 			</Panel>
             <Panel id="GoodGuys" class="Content">
-                <Label text="Team Snowleopard"/>
+                <Label id="GoodGuyName" text="Team Snowleopard" class="TeamLabel"/>
 				<Image id="GoodGuysPresent" class="ScoreImage" src="file://{images}/custom_game/check.png" />
                 <Image id="GoodGuysSnowman" class="ScoreImage" src="file://{images}/custom_game/check.png" />
                 <Image id="GoodGuysTree" class="ScoreImage" src="file://{images}/custom_game/check.png" />
+				<Panel id="GoodGuysPlayers" class="PlayerList">
+					<Panel id="GoodGuy0" class="PlayerData">
+						<DOTAHeroImage class="PlayerHeroImage" heroimagestyle="landscape"/>
+						<DOTAUserName />
+						<Label />
+						<DOTAAvatarImage />					
+					</Panel>
+					<Panel id="GoodGuy1" class="PlayerData">
+						<DOTAHeroImage class="PlayerHeroImage" heroimagestyle="landscape"/>
+						<DOTAUserName />
+						<Label />
+						<DOTAAvatarImage />					
+					</Panel>
+					<Panel id="GoodGuy2" class="PlayerData">
+						<DOTAHeroImage class="PlayerHeroImage" heroimagestyle="landscape"/>
+						<DOTAUserName />
+						<Label />
+						<DOTAAvatarImage />					
+					</Panel>
+					<Panel id="GoodGuy3" class="PlayerData">
+						<DOTAHeroImage class="PlayerHeroImage" heroimagestyle="landscape"/>
+						<DOTAUserName />
+						<Label />
+						<DOTAAvatarImage />					
+					</Panel>
+					<Panel id="GoodGuy4" class="PlayerData">
+						<DOTAHeroImage class="PlayerHeroImage" heroimagestyle="landscape"/>
+						<DOTAUserName />
+						<Label />
+						<DOTAAvatarImage />					
+					</Panel>
+				</Panel>
 			</Panel>
             <Panel id="BadGuys" class="Content">
-                <Label text="Team Owl"/>
+                <Label id="BadGuyName" text="Team Snowowl" class="TeamLabel"/>
 				<Image id="BadGuysPresent" class="ScoreImage" src="file://{images}/custom_game/x.png" />
                 <Image id="BadGuysSnowman" class="ScoreImage" src="file://{images}/custom_game/x.png" />
                 <Image id="BadGuysTree" class="ScoreImage" src="file://{images}/custom_game/check.png" />
-                
+                <Panel id="BadGuysPlayers" class="PlayerList">
+					<Panel id="BadGuy0" class="PlayerData">
+						<DOTAHeroImage class="PlayerHeroImage"/>
+						<DOTAUserName />
+						<Label />
+						<DOTAAvatarImage />					
+					</Panel>
+					<Panel id="BadGuy1" class="PlayerData">
+						<DOTAHeroImage class="PlayerHeroImage" heroimagestyle="landscape"/>
+						<DOTAUserName />
+						<Label />
+						<DOTAAvatarImage />					
+					</Panel>
+					<Panel id="BadGuy2" class="PlayerData">
+						<DOTAHeroImage class="PlayerHeroImage" heroimagestyle="landscape"/>
+						<DOTAUserName />
+						<Label />
+						<DOTAAvatarImage />					
+					</Panel>
+					<Panel id="BadGuy3" class="PlayerData">
+						<DOTAHeroImage class="PlayerHeroImage" heroimagestyle="landscape"/>
+						<DOTAUserName />
+						<Label />
+						<DOTAAvatarImage />					
+					</Panel>
+					<Panel id="BadGuy4" class="PlayerData">
+						<DOTAHeroImage class="PlayerHeroImage" heroimagestyle="landscape"/>
+						<DOTAUserName />
+						<Label />
+						<DOTAAvatarImage />					
+					</Panel>
+				</Panel>
 			</Panel>
-			<Panel id="TeamsContainer" />
 		</Panel>
 	</Panel>
 </root>
