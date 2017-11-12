@@ -8,8 +8,8 @@
 	</scripts>
 	<Panel class="TimePanel">
 		<Label id="Timer" text="--:--" />
-		<Label id="Month" text="December" />
-		<Label id="Day" text="-" />	
+		<Label id="Month" text="December" class="othercolor" />
+		<Label id="Day" text="-" class="othercolor" />	
 	
 	</Panel>
 </root>

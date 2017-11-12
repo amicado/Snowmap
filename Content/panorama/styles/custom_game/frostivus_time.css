@@ -3,11 +3,12 @@
     horizontal-align: middle;
     flow-children: down-wrap;
     background-image: url("file://{images}/custom_game/timer.psd");
-    background-size: 100px 100px;
     background-repeat: no-repeat;
-    padding: 20px;
+    width: 110px;
+    height: 100px;
+
+    padding-top: 20px;
     opacity: 1;
-    ui-scale: 110%;
 
 
 }
@@ -21,6 +22,12 @@ Label{
 .timer_alert{
     color: red;
 }
+
+.othercolor{
+	color: white;
+}
+
+
 .timer_over{
     ui-scale: 200%;
     opacity: 0.75;
