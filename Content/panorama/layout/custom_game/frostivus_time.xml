@@ -7,9 +7,10 @@
 		<include src="file://{resources}/scripts/custom_game/frostivus_time.js" />
 	</scripts>
 	<Panel class="TimePanel">
-		<Label id="Month" text="December" />
-		<Label id="Day" text="-" />
 		<Label id="Timer" text="--:--" />
+		<Label id="Month" text="December" />
+		<Label id="Day" text="-" />	
+	
 	</Panel>
 </root>
 

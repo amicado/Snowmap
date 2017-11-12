@@ -3,12 +3,11 @@
     horizontal-align: middle;
     flow-children: down-wrap;
     background-image: url("file://{images}/custom_game/timer.psd");
+    background-size: 100px 100px;
     background-repeat: no-repeat;
-    width: 150px;
-    height: 150px;
-    padding: 5px;
+    padding: 20px;
     opacity: 1;
-    ui-scale: 100%;
+    ui-scale: 110%;
 
 
 }
@@ -16,8 +15,8 @@ Label{
     text-align: center;
     color: red;
     horizontal-align: middle;
-    font-family: "Times New Roman", Times;
-    font-weight: bold;    
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
 }
 .timer_alert{
     color: red;
