@@ -4,18 +4,17 @@
     flow-children: down-wrap;
     background-image: url("file://{images}/custom_game/timer.psd");
     background-repeat: no-repeat;
-    background-size: 100% 120%;
+    width: 150px;
+    height: 150px;
     padding: 5px;
     opacity: 1;
     ui-scale: 100%;
 
-    transition-timing-function: ease;
-    transition-duration: 1s;
-    transition-property: ui-scale,opacity;
+
 }
 Label{
     text-align: center;
-    color: purple;
+    color: red;
     horizontal-align: middle;
     font-family: "Times New Roman", Times;
     font-weight: bold;    
