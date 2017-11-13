@@ -3,28 +3,26 @@
     horizontal-align: middle;
     flow-children: down-wrap;
     background-image: url("file://{images}/custom_game/timer.psd");
-    background-repeat: no-repeat;
-    width: 110px;
+    background-size: 100%;
+    width: 150px;
     height: 100px;
-
-    padding-top: 20px;
-    opacity: 1;
-
-
+    padding-top: 23px;
 }
 Label{
-    text-align: center;
-    color: red;
+    color: black;
     horizontal-align: middle;
-    font-family: "Times New Roman", Times, serif;
+    text-align: center;
     font-weight: bold;
+    font-size: 19px;
 }
 .timer_alert{
     color: red;
 }
 
 .othercolor{
-	color: white;
+    color: white;
+    
+    text-shadow: 2px 2px red;
 }
 
 
