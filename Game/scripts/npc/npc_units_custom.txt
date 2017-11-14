@@ -231,7 +231,7 @@
 		// General
 		//
 		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
-		"Model"						"models/courier/gold_mega_greevil/gold_mega_greevil.vmdl"	// Model."models/roshan_lod1.vmdl"	// Model.
+		"Model"						"models/creeps/mega_greevil/mega_greevil.vmdl"	// Model."models/roshan_lod1.vmdl"	// Model.
 		"SoundSet"					"Greevil"					// Name of sound set.
 		"ModelScale"				"1"
 		"Level"						"1"
