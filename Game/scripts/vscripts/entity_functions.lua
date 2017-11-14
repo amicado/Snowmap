@@ -1,5 +1,5 @@
 function Leave_Spawn(trigger)
-    print (trigger.activator:GetOwner():GetPlayerID())
+    --print (trigger.activator:GetOwner():GetPlayerID())
     --EmitAnnouncerSoundForPlayer("dsadowski_01.music.battle_01",trigger.activator:GetOwner():GetPlayerID());
     --trigger.caller:EmitSound("Courier.Spawn");
     --EmitAnnouncerSound("frostivus_awaits_you")

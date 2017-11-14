@@ -7,6 +7,9 @@ _G.currentDay = 0
 roshan_radiant = nil;
 roshan_dire = nil;
 
+ward_radiant = nil;
+ward_dire = nil;
+
 _G.spawn_radiant = false;
 _G.spawn_dire = false;
 
@@ -47,10 +50,13 @@ function FrostivusGameMode:InitGameMode()
 	GameRules:SetCustomVictoryMessageDuration( 10 )
 	GameRules:GetGameModeEntity():SetCameraDistanceOverride(1500);
 	GameRules:SetPreGameTime( 5 )
-	GameRules:SetStrategyTime( 0.0 )
+	GameRules:SetStrategyTime( 5.0 )
 	GameRules:SetShowcaseTime( 0.0 )
 	GameRules:SetStartingGold(10000)
 
+	ward_radiant = Entities:FindByName(nil,"npc_dota_frostivus_ward_radiant")
+	ward_dire = Entities:FindByName(nil,"npc_dota_frostivus_ward_dire")
+	
 	CustomGameEventManager:RegisterListener( "endscreen_request_data", Dynamic_Wrap(FrostivusGameMode, "EndScreenRequestData"))
 	ListenToGameEvent( "entity_killed", Dynamic_Wrap( FrostivusGameMode, 'OnEntityKilled' ), self )
 	ListenToGameEvent( "game_rules_state_change", Dynamic_Wrap( FrostivusGameMode, 'OnGameRulesStateChange' ), self )
@@ -61,11 +67,14 @@ function FrostivusGameMode:OnThink()
 	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
 		local currentDay = CountdownTimer()
 
-		if currentDay == 2 then
+		if currentDay == 3 then
+			ward_radiant:RemoveModifierByName("modifier_invulnerable");
+			ward_dire:RemoveModifierByName("modifier_invulnerable");
+		elseif currentDay == 10 then
 			FrostivusGameMode:SpawnRoshan()
 			--GameRules:AddMinimapDebugPoint(1, roshan_radiant:GetCenter(), 255, 255, 255, 500, 3.0)
 			--GameRules:AddMinimapDebugPointForTeam(1, roshan_radiant:GetCenter(), 255, 255, 255, 1000, 3.0, DOTA_TEAM_BADGUYS)
-			print(roshan_radiant:GetAbsOrigin())
+			--print(roshan_radiant:GetAbsOrigin())
 			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_GOODGUYS, "ping_location", { spawn_location = roshan_dire:GetAbsOrigin() } )
 			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_BADGUYS, "ping_location", { spawn_location = roshan_radiant:GetAbsOrigin() } )
 			--(nTeamID, hEntity, nXCoord, nYCoord, nEventType, nEventDuration)
@@ -144,10 +153,19 @@ function FrostivusGameMode:OnGameRulesStateChange()
 		IncreaseDay()
 		print("OnGameRulesStateChange Changing day to "..currentDay)
 		CustomGameEventManager:Send_ServerToAllClients( "update_day", {day = currentDay} )
-        CustomGameEventManager:Send_ServerToAllClients( "update_notification", {day = currentDay} )
+		CustomGameEventManager:Send_ServerToAllClients( "update_notification", {day = currentDay} )
+		ward_radiant:AddNewModifier(ward_radiant, nil, "modifier_invulnerable", nil)
+		ward_dire:AddNewModifier(ward_dire, nil, "modifier_invulnerable", nil)
 	elseif nNewState == DOTA_GAMERULES_STATE_STRATEGY_TIME then
 		--Add Instruction Panel call here
 		FrostivusGameMode:ForceAssignHeroes()
+		for nPlayerID = 0, ( DOTA_MAX_TEAM_PLAYERS - 1 ) do
+			if PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_GOODGUYS or PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_BADGUYS then
+				--local hPlayer = PlayerResource:GetPlayer( nPlayerID )
+				--print(hPlayer:GetOwner());
+				--hPlayer:GetOwner():AddItemByName("item_phase_boots")
+			end
+		end
 	end
 end
 
