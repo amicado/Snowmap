@@ -26,8 +26,8 @@ function CountdownTimer()
     end
     if t <= 0 then
         IncreaseDay()
-        print("CountdownTimer Changing day to "..currentDay.." in countdown")
-        if currentDay == 2 then
+        --print("CountdownTimer Changing day to "..currentDay.." in countdown")
+        if currentDay == 3 then
             FrostivusGameMode:SpawnRoshan() 
         end
 	    nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
@@ -41,5 +41,20 @@ end
 
 function IncreaseDay()
     currentDay = currentDay+1;
+    --Only spawn if not the 25th
+    if(currentDay >= 25) then
+        return;
+    end
+    if(spawn_dire) then
+        print("Spawning Greevling on dire");
+        local point1 = Entities:FindByName( nil, "santa_spawn_radiant"):GetAbsOrigin()
+        CreateUnitByName("npc_dota_creature_greevil", point1, true, nil, nil, DOTA_TEAM_GOODGUYS)
+        
+    elseif(spawn_radiant) then
+        print("Spawning Greevling on radiant");
+        
+        local point2 = Entities:FindByName( nil, "santa_spawn_dire"):GetAbsOrigin()
+        CreateUnitByName("npc_dota_creature_greevil", point2, true, nil, nil, DOTA_TEAM_BADGUYS)
+    end
 end
 

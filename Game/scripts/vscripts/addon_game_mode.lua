@@ -1,12 +1,14 @@
 -- Generated from template
 
-_G.COUNTDOWNTIMERVALUE = 500
+_G.COUNTDOWNTIMERVALUE = 10
 _G.nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 _G.currentDay = 0
+
 roshan_radiant = nil;
 roshan_dire = nil;
 
-_G.WINNER = nil;
+_G.spawn_radiant = false;
+_G.spawn_dire = false;
 
 if FrostivusGameMode == nil then
 	FrostivusGameMode = class({})
@@ -98,6 +100,16 @@ function FrostivusGameMode:OnEntityKilled( event )
 		--self:_AwardPoints( self._currentRound:GetPointReward() )
 		--self:_Victory()	
 		
+	elseif killedUnit:GetUnitName() == "npc_dota_frostivus_ward" then
+		if killedUnit:GetTeam() == DOTA_TEAM_GOODGUYS then
+			-- spawn greevlings on radiant side
+			_G.spawn_radiant = true;
+			
+		elseif killedUnit:GetTeam() == DOTA_TEAM_BADGUYS then
+			-- spawn greevlings on dire side
+			_G.spawn_dire = true;
+			
+		end
 	end
 end
 
