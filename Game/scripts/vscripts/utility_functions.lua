@@ -27,16 +27,16 @@ function CountdownTimer()
     if t <= 0 then
         IncreaseDay()
         --print("CountdownTimer Changing day to "..currentDay.." in countdown")
-        if currentDay == 3 then
-            FrostivusGameMode:SpawnRoshan() 
-        end
 	    nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 		CustomGameEventManager:Send_ServerToAllClients( "update_day", {day = currentDay} )
 		CustomGameEventManager:Send_ServerToAllClients( "timer_alert", {isTrue=false} )
         CustomGameEventManager:Send_ServerToAllClients( "update_notification", {day = currentDay} )
+        CustomGameEventManager:Send_ServerToAllClients( "countdown", broadcast_gametimer )
+        return currentDay;
     end
     
     CustomGameEventManager:Send_ServerToAllClients( "countdown", broadcast_gametimer )
+    return -1;
 end
 
 function IncreaseDay()
@@ -48,13 +48,14 @@ function IncreaseDay()
     if(spawn_dire) then
         print("Spawning Greevling on dire");
         local point1 = Entities:FindByName( nil, "santa_spawn_radiant"):GetAbsOrigin()
-        CreateUnitByName("npc_dota_creature_greevil", point1, true, nil, nil, DOTA_TEAM_GOODGUYS)
-        
+        local unit = CreateUnitByName("npc_dota_creature_greevil", point1, true, nil, nil, DOTA_TEAM_GOODGUYS)
+        --GameRules:AddMinimapDebugPointForTeam(DOTA_TEAM_BADGUYS, unit:GetCenter(), 255, 255, 255, 1000, 2.0) -- (PlayerID, position, R, G, B, SizeofDot, Duration)
     elseif(spawn_radiant) then
         print("Spawning Greevling on radiant");
         
         local point2 = Entities:FindByName( nil, "santa_spawn_dire"):GetAbsOrigin()
         CreateUnitByName("npc_dota_creature_greevil", point2, true, nil, nil, DOTA_TEAM_BADGUYS)
+        --GameRules:AddMinimapDebugPointForTeam(DOTA_TEAM_GOODGUYS, unit:GetCenter(), 255, 255, 255, 1000, 2.0)
     end
 end
 

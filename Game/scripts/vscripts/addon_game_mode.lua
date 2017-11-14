@@ -59,7 +59,17 @@ end
 -- Evaluate the state of the game
 function FrostivusGameMode:OnThink()
 	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-		CountdownTimer()
+		local currentDay = CountdownTimer()
+
+		if currentDay == 2 then
+			FrostivusGameMode:SpawnRoshan()
+			--GameRules:AddMinimapDebugPoint(1, roshan_radiant:GetCenter(), 255, 255, 255, 500, 3.0)
+			--GameRules:AddMinimapDebugPointForTeam(1, roshan_radiant:GetCenter(), 255, 255, 255, 1000, 3.0, DOTA_TEAM_BADGUYS)
+			print(roshan_radiant:GetAbsOrigin())
+			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_GOODGUYS, "ping_location", { spawn_location = roshan_dire:GetAbsOrigin() } )
+			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_BADGUYS, "ping_location", { spawn_location = roshan_radiant:GetAbsOrigin() } )
+			--(nTeamID, hEntity, nXCoord, nYCoord, nEventType, nEventDuration)
+        end
 	elseif GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
 		return nil
 	end

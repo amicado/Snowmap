@@ -20,7 +20,13 @@ function ClearNotification(){
     $( "#Notification" ).text = "";
 }
 
+function PingLocation(msg){
+    $.Msg( "PingLocation: ", msg );
+    GameUI.PingMinimapAtLocation( msg.spawn_location );
+}
+
 (function()
 {
     GameEvents.Subscribe( "update_notification", UpdateNotification );
+    GameEvents.Subscribe( "ping_location", PingLocation );
 })();
