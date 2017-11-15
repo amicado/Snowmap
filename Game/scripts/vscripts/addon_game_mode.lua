@@ -167,7 +167,7 @@ function FrostivusGameMode:OnEntityKilled( event )
 			timer = timer + 0.05;
 		 end
 		 
-		Timers:CreateTimer( 1.2 , function()
+		Timers:CreateTimer( 1.25 , function()
 			killedUnit:Destroy();
 		end)
 		 
