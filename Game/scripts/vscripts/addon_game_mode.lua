@@ -4,11 +4,17 @@ _G.COUNTDOWNTIMERVALUE = 10
 _G.nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 _G.currentDay = 0
 
+present_radiant = nil;
+present_dire = nil;
+
 roshan_radiant = nil;
 roshan_dire = nil;
 
 ward_radiant = nil;
 ward_dire = nil;
+
+tree_radiant = nil;
+tree_dire = nil;
 
 _G.spawn_radiant = false;
 _G.spawn_dire = false;
@@ -50,12 +56,18 @@ function FrostivusGameMode:InitGameMode()
 	GameRules:SetCustomVictoryMessageDuration( 10 )
 	GameRules:GetGameModeEntity():SetCameraDistanceOverride(1500);
 	GameRules:SetPreGameTime( 5 )
-	GameRules:SetStrategyTime( 5.0 )
+	GameRules:SetStrategyTime( 0.0 )
 	GameRules:SetShowcaseTime( 0.0 )
 	GameRules:SetStartingGold(10000)
 
+	present_radiant = Entities:FindByName(nil,"npc_dota_frostivus_present_radiant")
+	present_dire = Entities:FindByName(nil,"npc_dota_frostivus_present_dire")
+
 	ward_radiant = Entities:FindByName(nil,"npc_dota_frostivus_ward_radiant")
 	ward_dire = Entities:FindByName(nil,"npc_dota_frostivus_ward_dire")
+
+	tree_radiant = Entities:FindByName(nil,"npc_dota_frostivus_tree_radiant")
+	tree_dire = Entities:FindByName(nil,"npc_dota_frostivus_tree_dire")
 	
 	CustomGameEventManager:RegisterListener( "endscreen_request_data", Dynamic_Wrap(FrostivusGameMode, "EndScreenRequestData"))
 	ListenToGameEvent( "entity_killed", Dynamic_Wrap( FrostivusGameMode, 'OnEntityKilled' ), self )
@@ -70,7 +82,7 @@ function FrostivusGameMode:OnThink()
 		if currentDay == 3 then
 			ward_radiant:RemoveModifierByName("modifier_invulnerable");
 			ward_dire:RemoveModifierByName("modifier_invulnerable");
-		elseif currentDay == 10 then
+		elseif currentDay == 2 then
 			FrostivusGameMode:SpawnRoshan()
 			--GameRules:AddMinimapDebugPoint(1, roshan_radiant:GetCenter(), 255, 255, 255, 500, 3.0)
 			--GameRules:AddMinimapDebugPointForTeam(1, roshan_radiant:GetCenter(), 255, 255, 255, 1000, 3.0, DOTA_TEAM_BADGUYS)
@@ -103,8 +115,10 @@ function FrostivusGameMode:OnEntityKilled( event )
 	local attackerUnit = EntIndexToHScript( event.entindex_attacker or -1 )
 	local killedUnit = EntIndexToHScript( event.entindex_killed )
 
+	print(killedUnit:GetName());
+
 	
-	if killedUnit:GetUnitName() == "npc_dota_creature_mini_roshan" then
+	if killedUnit:GetName() == "npc_dota_creature_mini_roshan" then
 		if killedUnit:GetTeam() == DOTA_TEAM_GOODGUYS then
 			-- dire won
 			roshan_dire:StartGestureWithPlaybackRate(ACT_DOTA_FLAIL,3)
@@ -129,6 +143,23 @@ function FrostivusGameMode:OnEntityKilled( event )
 			_G.spawn_dire = true;
 			
 		end
+	elseif killedUnit:GetUnitName() == "npc_dota_frostivus_tree" then
+		local baublesToDestroy;
+		if killedUnit:GetTeam() == DOTA_TEAM_GOODGUYS then
+			-- spawn greevlings on radiant side
+			baublesToDestroy = Entities:FindAllByName("dota_frostivus_bauble_radiant");
+			
+		elseif killedUnit:GetTeam() == DOTA_TEAM_BADGUYS then
+			-- spawn greevlings on dire side
+			baublesToDestroy = Entities:FindAllByName("dota_frostivus_bauble_dire");
+			
+		end
+
+		for k,v in pairs(baublesToDestroy) do
+			ParticleManager:CreateParticle("particles/econ/items/templar_assassin/templar_assassin_butterfly/templar_assassin_trap_explode_arcs_butterfly.vpcf",PATTACH_ABSORIGIN,v);
+			v:Destroy();
+		 end
+
 	end
 end
 
@@ -136,7 +167,7 @@ function FrostivusGameMode:EndGame( victoryTeam )
 	if victoryTeam == DOTA_TEAM_GOODGUYS then
 		GameRules:SetCustomVictoryMessage( "Team Snowleopard won!");
 	else
-		GameRules:SetCustomVictoryMessage( "Team Owl won!");
+		GameRules:SetCustomVictoryMessage( "Team Snowowl won!");
 	end	
 	--FrostivusGameMode:UpdateScoreboard();
 	_G.WINNER = victoryTeam;
@@ -154,18 +185,12 @@ function FrostivusGameMode:OnGameRulesStateChange()
 		print("OnGameRulesStateChange Changing day to "..currentDay)
 		CustomGameEventManager:Send_ServerToAllClients( "update_day", {day = currentDay} )
 		CustomGameEventManager:Send_ServerToAllClients( "update_notification", {day = currentDay} )
+
 		ward_radiant:AddNewModifier(ward_radiant, nil, "modifier_invulnerable", nil)
 		ward_dire:AddNewModifier(ward_dire, nil, "modifier_invulnerable", nil)
 	elseif nNewState == DOTA_GAMERULES_STATE_STRATEGY_TIME then
 		--Add Instruction Panel call here
 		FrostivusGameMode:ForceAssignHeroes()
-		for nPlayerID = 0, ( DOTA_MAX_TEAM_PLAYERS - 1 ) do
-			if PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_GOODGUYS or PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_BADGUYS then
-				--local hPlayer = PlayerResource:GetPlayer( nPlayerID )
-				--print(hPlayer:GetOwner());
-				--hPlayer:GetOwner():AddItemByName("item_phase_boots")
-			end
-		end
 	end
 end
 
