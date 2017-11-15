@@ -30,6 +30,7 @@ end
 require( "utility_functions" )
 require( "entity_functions" )
 require ( "scores")
+require("timers")
 --require( "events" )
 
 function Precache( context )
@@ -154,12 +155,22 @@ function FrostivusGameMode:OnEntityKilled( event )
 			baublesToDestroy = Entities:FindAllByName("dota_frostivus_bauble_dire");
 			
 		end
-
+		
+		local timer = 0;
 		for k,v in pairs(baublesToDestroy) do
-			ParticleManager:CreateParticle("particles/econ/items/templar_assassin/templar_assassin_butterfly/templar_assassin_trap_explode_arcs_butterfly.vpcf",PATTACH_ABSORIGIN,v);
-			v:Destroy();
+			Timers:CreateTimer( timer , function()
+				ParticleManager:CreateParticle("particles/econ/items/effigies/status_fx_effigies/frosty_base_statue_destruction_radiant.vpcf",PATTACH_ABSORIGIN,v);
+				Timers:CreateTimer( 1 , function()
+					v:Kill();
+				end)
+			end)
+			timer = timer + 0.05;
 		 end
-
+		 
+		Timers:CreateTimer( 1.2 , function()
+			killedUnit:Destroy();
+		end)
+		 
 	end
 end
 

@@ -1,6 +1,8 @@
 "addon"
 {
 	"addonname"										"Frostivus"
+	"DOTA_GAMEMODE_15"								"Frostivus"
+	
 	"frostivus_game_info_header_objective"			"Objective:"
 	"frostivus_brief_description"					"Destroy the stategic objectives of your enemys and prevent them of destroying yours. "
 	"frostivus_game_info_header_how_to_play"		"How To Play:"
@@ -19,5 +21,9 @@
 	"frostivus_game_objective_forest"				"The objective in the forest is available soon."
 	"frostivus_game_objective_lake"					"The objective around the lake is available soon."
 	"frostivus_game_rosha_claus"					"Ho ho ho! Rosha Claus is coming. Prepare yourself."
+
+	"npc_dota_frostivus_present"					"Present"
+	
+
 }
 
