@@ -4,20 +4,21 @@ _G.COUNTDOWNTIMERVALUE = 10
 _G.nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 _G.currentDay = 0
 
-present_radiant = nil;
-present_dire = nil;
+_G.present_radiant = nil;
+_G.present_dire = nil;
 
-roshan_radiant = nil;
-roshan_dire = nil;
+_G.ward_radiant = nil;
+_G.ward_dire = nil;
 
-ward_radiant = nil;
-ward_dire = nil;
-
-tree_radiant = nil;
-tree_dire = nil;
+_G.tree_radiant = nil;
+_G.tree_dire = nil;
 
 _G.spawn_radiant = false;
 _G.spawn_dire = false;
+
+
+roshan_radiant = nil;
+roshan_dire = nil;
 
 if FrostivusGameMode == nil then
 	FrostivusGameMode = class({})
@@ -83,7 +84,16 @@ function FrostivusGameMode:OnThink()
 		if currentDay == 3 then
 			ward_radiant:RemoveModifierByName("modifier_invulnerable");
 			ward_dire:RemoveModifierByName("modifier_invulnerable");
+
+			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_GOODGUYS, "ping_location", { spawn_location = ward_dire:GetAbsOrigin() } )
+			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_BADGUYS, "ping_location", { spawn_location = ward_radiant:GetAbsOrigin() } )
 		elseif currentDay == 2 then
+			tree_radiant:RemoveModifierByName("modifier_invulnerable");
+			tree_dire:RemoveModifierByName("modifier_invulnerable");
+
+			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_GOODGUYS, "ping_location", { spawn_location = tree_dire:GetAbsOrigin() } )
+			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_BADGUYS, "ping_location", { spawn_location = tree_radiant:GetAbsOrigin() } )
+        elseif currentDay == 4 then
 			FrostivusGameMode:SpawnRoshan()
 			--GameRules:AddMinimapDebugPoint(1, roshan_radiant:GetCenter(), 255, 255, 255, 500, 3.0)
 			--GameRules:AddMinimapDebugPointForTeam(1, roshan_radiant:GetCenter(), 255, 255, 255, 1000, 3.0, DOTA_TEAM_BADGUYS)
@@ -134,6 +144,10 @@ function FrostivusGameMode:OnEntityKilled( event )
 		--self:_AwardPoints( self._currentRound:GetPointReward() )
 		--self:_Victory()	
 		
+	elseif killedUnit:GetUnitName() == "npc_dota_frostivus_present" then
+		killedUnit:Destroy();
+		GameRules:SendCustomMessage("<font color='#CC33FF'> A present has been destroyed! It no longer provides its auras. </font><font color='#CC3300'>", 0, 0)
+		
 	elseif killedUnit:GetUnitName() == "npc_dota_frostivus_ward" then
 		if killedUnit:GetTeam() == DOTA_TEAM_GOODGUYS then
 			-- spawn greevlings on radiant side
@@ -144,16 +158,22 @@ function FrostivusGameMode:OnEntityKilled( event )
 			_G.spawn_dire = true;
 			
 		end
+		GameRules:SendCustomMessage("<font color='#CC33FF'> A ward has been destroyed! Greevlings are now spawning at the center. </font><font color='#CC3300'>", 0, 8)
+
 	elseif killedUnit:GetUnitName() == "npc_dota_frostivus_tree" then
 		local baublesToDestroy;
 		if killedUnit:GetTeam() == DOTA_TEAM_GOODGUYS then
 			-- spawn greevlings on radiant side
 			baublesToDestroy = Entities:FindAllByName("dota_frostivus_bauble_radiant");
 			
+			--vision for badguys
+			AddFOWViewer(DOTA_TEAM_BADGUYS, Entities:FindByName( nil, "santa_spawn_dire"):GetAbsOrigin(),2000,60*30,false);
 		elseif killedUnit:GetTeam() == DOTA_TEAM_BADGUYS then
 			-- spawn greevlings on dire side
 			baublesToDestroy = Entities:FindAllByName("dota_frostivus_bauble_dire");
-			
+
+			--vision for goodguys
+			AddFOWViewer(DOTA_TEAM_GOODGUYS, Entities:FindByName( nil, "santa_spawn_radiant"):GetAbsOrigin(),2000,60*30,false);
 		end
 		
 		local timer = 0;
@@ -170,7 +190,7 @@ function FrostivusGameMode:OnEntityKilled( event )
 		Timers:CreateTimer( 1.25 , function()
 			killedUnit:Destroy();
 		end)
-		 
+		GameRules:SendCustomMessage("<font color='#CC33FF'> A tree has been destroyed! Vision is now granted over the center. </font><font color='#CC3300'>", 0, 0) 
 	end
 end
 
@@ -199,6 +219,9 @@ function FrostivusGameMode:OnGameRulesStateChange()
 
 		ward_radiant:AddNewModifier(ward_radiant, nil, "modifier_invulnerable", nil)
 		ward_dire:AddNewModifier(ward_dire, nil, "modifier_invulnerable", nil)
+
+		tree_radiant:AddNewModifier(ward_radiant, nil, "modifier_invulnerable", nil)
+		tree_dire:AddNewModifier(ward_dire, nil, "modifier_invulnerable", nil)
 	elseif nNewState == DOTA_GAMERULES_STATE_STRATEGY_TIME then
 		--Add Instruction Panel call here
 		FrostivusGameMode:ForceAssignHeroes()
