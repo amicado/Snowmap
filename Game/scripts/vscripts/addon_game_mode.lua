@@ -119,7 +119,7 @@ function FrostivusGameMode:OnEntityKilled( event )
 	print(killedUnit:GetName());
 
 	
-	if killedUnit:GetName() == "npc_dota_creature_mini_roshan" then
+	if killedUnit:GetUnitName() == "npc_dota_creature_mini_roshan" then
 		if killedUnit:GetTeam() == DOTA_TEAM_GOODGUYS then
 			-- dire won
 			roshan_dire:StartGestureWithPlaybackRate(ACT_DOTA_FLAIL,3)
