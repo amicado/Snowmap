@@ -1,6 +1,6 @@
 -- Generated from template
 
-_G.COUNTDOWNTIMERVALUE = 10
+_G.COUNTDOWNTIMERVALUE = 5
 _G.nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 _G.currentDay = 0
 
@@ -62,14 +62,14 @@ function FrostivusGameMode:InitGameMode()
 	GameRules:SetShowcaseTime( 0.0 )
 	GameRules:SetStartingGold(10000)
 
-	present_radiant = Entities:FindByName(nil,"npc_dota_frostivus_present_radiant")
-	present_dire = Entities:FindByName(nil,"npc_dota_frostivus_present_dire")
+	_G.present_radiant = Entities:FindByName(nil,"npc_dota_frostivus_present_radiant")
+	_G.present_dire = Entities:FindByName(nil,"npc_dota_frostivus_present_dire")
 
-	ward_radiant = Entities:FindByName(nil,"npc_dota_frostivus_ward_radiant")
-	ward_dire = Entities:FindByName(nil,"npc_dota_frostivus_ward_dire")
+	_G.ward_radiant = Entities:FindByName(nil,"npc_dota_frostivus_ward_radiant")
+	_G.ward_dire = Entities:FindByName(nil,"npc_dota_frostivus_ward_dire")
 
-	tree_radiant = Entities:FindByName(nil,"npc_dota_frostivus_tree_radiant")
-	tree_dire = Entities:FindByName(nil,"npc_dota_frostivus_tree_dire")
+	_G.tree_radiant = Entities:FindByName(nil,"npc_dota_frostivus_tree_radiant")
+	_G.tree_dire = Entities:FindByName(nil,"npc_dota_frostivus_tree_dire")
 	
 	CustomGameEventManager:RegisterListener( "endscreen_request_data", Dynamic_Wrap(FrostivusGameMode, "EndScreenRequestData"))
 	ListenToGameEvent( "entity_killed", Dynamic_Wrap( FrostivusGameMode, 'OnEntityKilled' ), self )
@@ -145,20 +145,28 @@ function FrostivusGameMode:OnEntityKilled( event )
 		--self:_Victory()	
 		
 	elseif killedUnit:GetUnitName() == "npc_dota_frostivus_present" then
+		GameRules:SendCustomMessage("<font color='#FF0000'> A present has been destroyed! It no longer provides its auras. </font><font color='#FF0000'>", 0, 0)
+		if killedUnit:GetTeam() == DOTA_TEAM_GOODGUYS then
+			_G.present_radiant = nil;
+			
+		elseif killedUnit:GetTeam() == DOTA_TEAM_BADGUYS then
+			_G.present_dire = nil;			
+		end
 		killedUnit:Destroy();
-		GameRules:SendCustomMessage("<font color='#CC33FF'> A present has been destroyed! It no longer provides its auras. </font><font color='#CC3300'>", 0, 0)
-		
 	elseif killedUnit:GetUnitName() == "npc_dota_frostivus_ward" then
 		if killedUnit:GetTeam() == DOTA_TEAM_GOODGUYS then
 			-- spawn greevlings on radiant side
 			_G.spawn_radiant = true;
+			_G.ward_radiant = nil;
 			
 		elseif killedUnit:GetTeam() == DOTA_TEAM_BADGUYS then
 			-- spawn greevlings on dire side
 			_G.spawn_dire = true;
+			_G.ward_dire = nil;
 			
 		end
-		GameRules:SendCustomMessage("<font color='#CC33FF'> A ward has been destroyed! Greevlings are now spawning at the center. </font><font color='#CC3300'>", 0, 8)
+		GameRules:SendCustomMessage("<font color='#FF0000'> A ward has been destroyed! Vision is now granted over the center. </font><font color='#FF0000'>", 0, 8)
+		killedUnit:Destroy();
 
 	elseif killedUnit:GetUnitName() == "npc_dota_frostivus_tree" then
 		local baublesToDestroy;
@@ -168,12 +176,14 @@ function FrostivusGameMode:OnEntityKilled( event )
 			
 			--vision for badguys
 			AddFOWViewer(DOTA_TEAM_BADGUYS, Entities:FindByName( nil, "santa_spawn_dire"):GetAbsOrigin(),2000,60*30,false);
+			_G.tree_radiant = nil;
 		elseif killedUnit:GetTeam() == DOTA_TEAM_BADGUYS then
 			-- spawn greevlings on dire side
 			baublesToDestroy = Entities:FindAllByName("dota_frostivus_bauble_dire");
 
 			--vision for goodguys
 			AddFOWViewer(DOTA_TEAM_GOODGUYS, Entities:FindByName( nil, "santa_spawn_radiant"):GetAbsOrigin(),2000,60*30,false);
+			_G.tree_dire = nil;
 		end
 		
 		local timer = 0;
@@ -190,7 +200,7 @@ function FrostivusGameMode:OnEntityKilled( event )
 		Timers:CreateTimer( 1.25 , function()
 			killedUnit:Destroy();
 		end)
-		GameRules:SendCustomMessage("<font color='#CC33FF'> A tree has been destroyed! Vision is now granted over the center. </font><font color='#CC3300'>", 0, 0) 
+		GameRules:SendCustomMessage("<font color='#FF0000'> A tree has been destroyed! Greevlings are now spawning at the center. </font><font color='#FF0000'>", 0, 0) 
 	end
 end
 

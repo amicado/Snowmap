@@ -11,18 +11,18 @@
 		<Panel class="EndScreenWindow">
 			<Panel id="Legend" class="Legend">
                 <Label text="Team" class="TeamTitle"/>
-				<Image id="PresentImage" class="ScoreImage" src="file://{images}/custom_game/present.jpg" />
-                <Image id="SnowmanImage" class="ScoreImage" src="file://{images}/custom_game/snowman.jpg" />
-                <Image id="TreeImage" class="ScoreImage" src="file://{images}/custom_game/tree.jpg" />
+				<Image id="PresentImage" class="ScoreImage" src="file://{images}/custom_game/endscreen/present.png" />
+                <Image id="TreeImage" class="ScoreImage" src="file://{images}/custom_game/endscreen/xmas_tree.png" />
+                <Image id="WardImage" class="ScoreImage" src="file://{images}/custom_game/endscreen/ward.png" />
 				<Label text="Stats" class="StatsTitle"/>
 				<!--Label class="LegendPanel ScoreCol_Items" text="#custom_end_screen_legend_items" /-->
 				<!--Label class="LegendPanel ScoreCol_Gold" text="#custom_end_screen_legend_gold" /-->
 			</Panel>
             <Panel id="GoodGuys" class="Content">
                 <Label id="GoodGuyName" text="Team Snowleopard" class="TeamLabel"/>
-				<Image id="GoodGuysPresent" class="ScoreImage" src="file://{images}/custom_game/check.png" />
-                <Image id="GoodGuysSnowman" class="ScoreImage" src="file://{images}/custom_game/check.png" />
-                <Image id="GoodGuysTree" class="ScoreImage" src="file://{images}/custom_game/check.png" />
+				<Image id="GoodGuysPresent" class="ScoreImage" src="file://{images}/custom_game/endscreen/gotitemnot.png"/>
+                <Image id="GoodGuysTree" class="ScoreImage" src="file://{images}/custom_game/endscreen/gotitem.png" />
+                <Image id="GoodGuysWard" class="ScoreImage" />
 				<Panel id="GoodGuysPlayers" class="PlayerList">
 					<Panel id="GoodGuy0" class="PlayerData">
 						<DOTAHeroImage class="PlayerHeroImage" heroimagestyle="landscape"/>
@@ -54,9 +54,9 @@
 			</Panel>
             <Panel id="BadGuys" class="Content">
                 <Label id="BadGuyName" text="Team Snowowl" class="TeamLabel"/>
-				<Image id="BadGuysPresent" class="ScoreImage" src="file://{images}/custom_game/x.png" />
-                <Image id="BadGuysSnowman" class="ScoreImage" src="file://{images}/custom_game/x.png" />
-                <Image id="BadGuysTree" class="ScoreImage" src="file://{images}/custom_game/check.png" />
+				<Image id="BadGuysPresent" class="ScoreImage" />
+                <Image id="BadGuysTree" class="ScoreImage" />
+                <Image id="BadGuysWard" class="ScoreImage" />
                 <Panel id="BadGuysPlayers" class="PlayerList">
 					<Panel id="BadGuy0" class="PlayerData">
 						<DOTAHeroImage class="PlayerHeroImage"/>
