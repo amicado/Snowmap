@@ -8,8 +8,8 @@
 			// General
 			//
 			"BaseClass"					"npc_dota_building"	// Class of entity of link to.
-			"MinimapIcon"				"minimap_candybucket"
-			"MinimapIconSize"			"500"
+			"MinimapIcon"				"present_minimap_icon"
+			"MinimapIconSize"			"600"
 			"Level"						"1"
 			"UnitLabel"                 "healing_ward"
  
@@ -66,8 +66,8 @@
 			//
 			"BaseClass"					"npc_dota_building"	// Class of entity of link to.
 			"SoundSet"					"Tower.Water"					// Name of sound set.
-			"MinimapIcon"				"minimap_candybucket"
-			"MinimapIconSize"			"500"
+			"MinimapIcon"				"tree_minimap_icon"
+			"MinimapIconSize"			"600"
 			"Level"						"1"
 			"UnitLabel"                 "healing_ward"
  
@@ -115,8 +115,8 @@
 			//
 			"BaseClass"					"npc_dota_building"	// Class of entity of link to.
 			"SoundSet"					"Tower.Water"					// Name of sound set.
-			"MinimapIcon"				"minimap_candybucket"
-			"MinimapIconSize"			"500"
+			"MinimapIcon"				"ward_minimap_icon"
+			"MinimapIconSize"			"600"
 			"Level"						"1"
 			"UnitLabel"                 "healing_ward"
  
