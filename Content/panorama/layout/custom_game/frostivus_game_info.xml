@@ -3,6 +3,9 @@
         <include src="file://{resources}/styles/dotastyles.css" />
 		<include src="file://{resources}/styles/custom_game/frostivus_game_info.css" />
 	</styles>
+	<scripts>
+        <include src="file://{resources}/scripts/custom_game/frostivus_game_info.js" />
+	</scripts>
     <Panel class="FrostivusGameInfo">
 		<Panel id="Title">
 			<Label id="TitleName" text="#addonname" />

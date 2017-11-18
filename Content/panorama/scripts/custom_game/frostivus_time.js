@@ -39,12 +39,6 @@ function AlertTimer( data )
         $( "#Timer" ).RemoveClass( "timer_alert" );
 }
 
-function TimerOver(){
-	//$.GetContextPanel().AddClass( "timer_over" );
-}
-function StartTimer(){
-	//$.GetContextPanel().RemoveClass( "timer_over" );
-}
 
 function UpdateDay(data)
 {
@@ -58,8 +52,6 @@ function UpdateDay(data)
     }else{
         $( "#Day" ).text = day+"th";
 	}
-	
-	TimerOver();
 }
 
 (function()
@@ -67,7 +59,6 @@ function UpdateDay(data)
     GameEvents.Subscribe( "countdown", UpdateTimer );
     GameEvents.Subscribe( "timer_alert", AlertTimer );
 	GameEvents.Subscribe( "update_day", UpdateDay );
-	GameEvents.Subscribe( "start_timer", StartTimer );
 
 })();
 

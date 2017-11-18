@@ -10,7 +10,7 @@
 		<Label id="NotificationDay" text="Day 1"/>	
 		<Panel id="NotificationTextPanel">
 			<Panel id="Content">
-				<Image id="TextImage"/>
+				<Image id="TextImage" />
 				<Label id="NotificationText" class="TextLabel"/>
 			</Panel>
 		</Panel>

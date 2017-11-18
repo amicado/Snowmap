@@ -30,8 +30,8 @@ end
 ---------------------------------------------------------------------------
 require( "utility_functions" )
 require( "entity_functions" )
-require ( "scores")
-require("timers")
+require ( "scores" )
+require( "timers" )
 --require( "events" )
 
 function Precache( context )

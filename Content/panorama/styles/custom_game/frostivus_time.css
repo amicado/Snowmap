@@ -2,7 +2,7 @@
 {
     horizontal-align: middle;
     flow-children: down-wrap;
-    background-image: url("file://{images}/custom_game/timer.psd");
+    background-image: url("file://{images}/custom_game/endscreen/roshan.png");
     background-size: 100%;
     width: 150px;
     height: 100px;
@@ -23,11 +23,5 @@ Label{
     color: white;
     
     text-shadow: 2px 2px red;
-}
-
-
-.timer_over{
-    ui-scale: 200%;
-    opacity: 0.75;
 }
 

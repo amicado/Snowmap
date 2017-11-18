@@ -10,7 +10,7 @@
             "reference_operator"
             {
                 "operator"              "sos_reference_stack"
-                "reference_stack"       "dota_update_default"
+                "reference_stack"       "dota_update_vo_switch"
                 "operator_variables"
                 {
                     "vsnd_files"
@@ -28,22 +28,7 @@
                     {
                         "value"     "100.000000"
                     }
-                    "pitch_min"
-                    {
-                        "value"     "1.000000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"     "1.000000"
-                    }
-                    "chan_type"
-                    {
-                        "value"     "6"
-                    }
-                    "memory_type"
-                    {
-                        "value"     "0"
-                    }
+                   
                     "soundlevel_min"
                     {
                         "value"     "100.000000"
