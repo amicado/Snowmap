@@ -11,3 +11,8 @@ function Leave_Spawn(trigger)
 	CustomGameEventManager:Send_ServerToAllClients( "emit_sound", {sound = "frostivus_awaits_you"} );
 	--EmitAnnouncerSound("announcer_announcer_roshan_fallen_dire")
 end
+
+function PresentAutoCast()
+	present_radiant:GetAbilityByIndex(0):CastAbility();
+	present_dire:GetAbilityByIndex(0):CastAbility();
+end

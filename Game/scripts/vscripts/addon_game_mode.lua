@@ -1,6 +1,6 @@
 -- Generated from template
 
-_G.COUNTDOWNTIMERVALUE = 5
+_G.COUNTDOWNTIMERVALUE = 500
 _G.nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 _G.currentDay = 0
 
@@ -66,6 +66,9 @@ function FrostivusGameMode:InitGameMode()
 
 	_G.present_radiant = Entities:FindByName(nil,"npc_dota_frostivus_present_radiant")
 	_G.present_dire = Entities:FindByName(nil,"npc_dota_frostivus_present_dire")
+	--Enable autocast
+	present_radiant:GetAbilityByIndex(0):ToggleAutoCast();
+	present_dire:GetAbilityByIndex(0):ToggleAutoCast();
 
 	_G.ward_radiant = Entities:FindByName(nil,"npc_dota_frostivus_ward_radiant")
 	_G.ward_dire = Entities:FindByName(nil,"npc_dota_frostivus_ward_dire")

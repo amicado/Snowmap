@@ -2,4 +2,109 @@
 "DOTAAbilities"
 {
 	"Version"		"1"
+
+	"punch_time"
+	{
+		// General
+		//-------------------------------------------------------------------------------------
+		"BaseClass"        "ability_datadriven" 
+		"AbilityBehavior"  "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+   		"AbilityUnitTargetType"  "DOTA_UNIT_TARGET_HERO"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ALLIES_YES"
+		"AbilityTextureName"			"warchasers_buff"
+
+		// Stats
+		//-------------------------------------------------------------------------------------
+		"AbilityCastPoint" "0.5"
+		"AbilityCooldown"  "30"
+		"AbilityManaCost"  "0"
+		"AbilityCastRange"        "%radius"
+
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"		"particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_cast.vpcf"
+			"particle"		"particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
+			"soundfile"		"sounds/weapons/hero/ogre_magi/bloodlust_cast.vsnd"
+			"soundfile"		"sounds/weapons/hero/ogre_magi/bloodlust_target.vsnd"
+		}
+		
+
+		 "AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"duration" "30"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"radius" "600"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_hp_regen" "10"
+			}
+			"04"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_mana_regen" "10"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"
+					{
+						"Center"  				"CASTER"
+						"Radius" 				"%radius"
+						"Teams" 				"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+						"Types" 				"DOTA_UNIT_TARGET_HERO"
+					}
+
+				"ModifierName"			"modifier_drinking_punch"
+				
+			}
+
+			
+			"FireEffect"
+			{
+				"EffectName"		"particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_cast.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"Target"			"CASTER"
+			}
+			
+			"FireSound"
+			{
+				"EffectName"	"Hero_OgreMagi.Bloodlust.Cast"
+				"Target"		"CASTER"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_drinking_punch"
+			{
+				"Duration"	"%duration"
+			
+				"EffectName"		"particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"IsPurgable" "1"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_hp_regen"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%bonus_mana_regen"
+				}
+				
+			}
+		}
+	
+	}
 }

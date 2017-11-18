@@ -16,7 +16,7 @@
 			// Abilities
 			//----------------------------------------------------------------
  
-			"Ability1"					"skeleton_king_vampiric_aura"			// Ability 1.
+			"Ability1"					"punch_time"			// Ability 1.
 			"Ability2"					"elder_titan_natural_order"			// Ability 2.
 			"Ability3"					"kobold_taskmaster_speed_aura"			// Ability 3.
 			"Ability4"					""			// Ability 4.

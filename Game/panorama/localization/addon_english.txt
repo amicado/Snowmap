@@ -22,8 +22,5 @@
 	"frostivus_game_objective_lake"					"The objective around the lake is available soon."
 	"frostivus_game_rosha_claus"					"Ho ho ho! Rosha Claus is coming. Prepare yourself."
 
-	"npc_dota_frostivus_present"					"Present"
-	
-
 }
 
