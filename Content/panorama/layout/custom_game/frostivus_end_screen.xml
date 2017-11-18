@@ -12,7 +12,7 @@
 			<Panel id="Legend" class="Legend">
                 <Label text="Team" class="TeamTitle"/>
 				<Image id="PresentImage" class="ScoreImage" src="file://{images}/custom_game/endscreen/present.png" />
-                <Image id="TreeImage" class="ScoreImage" src="file://{images}/custom_game/endscreen/xmas_tree.png" />
+                <Image id="TreeImage" class="ScoreImage" src="file://{images}/custom_game/endscreen/tree.png" />
                 <Image id="WardImage" class="ScoreImage" src="file://{images}/custom_game/endscreen/ward.png" />
 				<Label text="Stats" class="StatsTitle"/>
 				<!--Label class="LegendPanel ScoreCol_Items" text="#custom_end_screen_legend_items" /-->

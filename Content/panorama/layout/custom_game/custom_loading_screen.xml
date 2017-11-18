@@ -1,0 +1,9 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+	</styles>
+	
+	<Panel class="LoadingScreen">
+		<Image id="LoadingImage" src="file://{images}/custom_game/loading_screen.png" />
+	</Panel>
+</root>

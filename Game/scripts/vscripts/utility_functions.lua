@@ -21,7 +21,7 @@ function CountdownTimer()
             timer_second_01 = s01,
         }
     
-    if t == 15 then
+    if t <= 10 then
         CustomGameEventManager:Send_ServerToAllClients( "timer_alert", {isTrue=true} )
     end
     if t <= 0 then

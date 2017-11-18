@@ -1,12 +1,50 @@
 .NotificationPanel
 {
-    horizontal-align: middle;
-    y:100px;
-    
+    horizontal-align: right;
+    background-image: url("file://{images}/custom_game/notification.png");
+    background-size: 100% 100%;
+    width: 400px;
+    height: 250px;
+    flow-children: down;
+    position: 400px 100px 0px;
+    transition-duration: 2.0s;
+    transition-property: position;
 }
-.Notification{
-    color: gold;
-    font-size: 42px;
+
+.NotificationShow{
+    position: 0px 100px 0px;
+}
+
+#NotificationTextPanel
+{   
+    flow-children: right;
+    height: 200px;
+    width: 600px;
+}
+#Content{
+    horizontal-align: center;
+    padding-left: 90px;
+    flow-children: right;
+    vertical-align: top;
+}
+#TextImage{
+    width: 60px;
+    height: 60px;
+}
+
+#NotificationDay{
+    color: #FFFFFF;
+    font-size: 60px;
     font-weight: bold;
-    horizontal-align: center;  
+    horizontal-align: center; 
+    padding-left: 90px; 
+    padding-top: 40px;
+    text-shadow: 5px 5px red;
+}
+
+.TextLabel{
+    color: #FFFFFF;
+    font-size: 40px;
+    text-shadow: 1px 1px red;
+    vertical-align: center;
 }

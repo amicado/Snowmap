@@ -1,23 +1,42 @@
+var days = [1,9,17,25]; //present, tree, ward, roshan
+var objectives = ["present","tree","ward","roshan"];
 function UpdateNotification(data)
 {
-    if(data.day == 1){
-        SetNotification("#frostivus_game_objective_mountain");    
-    }else if(data.day == 9){
-        SetNotification("#frostivus_game_objective_forest");
-    }else if(data.day == 17){
-        SetNotification("#frostivus_game_objective_lake");
-    }else if(data.day == 25){
-        SetNotification("#frostivus_game_rosha_claus");  
+    //$.Msg( "UpdateNotification: ", data);
+    var newDay = data.day;
+    var newObjective = "";
+    var event = "";
+    for(var i = 0; i<days.length; i++){
+        if(days[i+1] == null){ //its roshan
+            newObjective = objectives[i];
+            event = " arrived";
+            break;
+        }else if(newDay == days[i]){ //its some exact date
+            newObjective = objectives[i];
+            event = " available";
+            break;
+        }else if(newDay > days[i] && newDay < days[i+1]){
+            newObjective = objectives[i+1];
+            var dayDiff = days[i+1]-newDay;
+            event = " in "+dayDiff+(dayDiff==1?" day":" days");
+            break;
+        }
     }
+    SetNotification(newDay, newObjective, event);
     
 }
 
-function SetNotification(text){
-    $( "#Notification" ).text = $.Localize(text);
+function SetNotification(day, newObjective, event){
+    $( "#NotificationDay" ).text = "Day "+day;
+    $( "#TextImage").SetImage("file://{images}/custom_game/endscreen/"+newObjective+".png");
+    $( "#NotificationText" ).text = $.Localize(event);
+
+    $.GetContextPanel().AddClass( "NotificationShow" );
+        
     $.Schedule( 3, ClearNotification );
 }
 function ClearNotification(){
-    $( "#Notification" ).text = "";
+    $.GetContextPanel().RemoveClass( "NotificationShow" );
 }
 
 function PingLocation(msg){

@@ -1,6 +1,6 @@
 -- Generated from template
 
-_G.COUNTDOWNTIMERVALUE = 500
+_G.COUNTDOWNTIMERVALUE = 5
 _G.nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 _G.currentDay = 0
 
@@ -81,19 +81,19 @@ function FrostivusGameMode:OnThink()
 	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
 		local currentDay = CountdownTimer()
 
-		if currentDay == 3 then
+		if currentDay == 17 then
 			ward_radiant:RemoveModifierByName("modifier_invulnerable");
 			ward_dire:RemoveModifierByName("modifier_invulnerable");
 
 			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_GOODGUYS, "ping_location", { spawn_location = ward_dire:GetAbsOrigin() } )
 			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_BADGUYS, "ping_location", { spawn_location = ward_radiant:GetAbsOrigin() } )
-		elseif currentDay == 2 then
+		elseif currentDay == 9 then
 			tree_radiant:RemoveModifierByName("modifier_invulnerable");
 			tree_dire:RemoveModifierByName("modifier_invulnerable");
 
 			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_GOODGUYS, "ping_location", { spawn_location = tree_dire:GetAbsOrigin() } )
 			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_BADGUYS, "ping_location", { spawn_location = tree_radiant:GetAbsOrigin() } )
-        elseif currentDay == 4 then
+        elseif currentDay == 25 then
 			FrostivusGameMode:SpawnRoshan()
 			--GameRules:AddMinimapDebugPoint(1, roshan_radiant:GetCenter(), 255, 255, 255, 500, 3.0)
 			--GameRules:AddMinimapDebugPointForTeam(1, roshan_radiant:GetCenter(), 255, 255, 255, 1000, 3.0, DOTA_TEAM_BADGUYS)

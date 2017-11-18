@@ -7,6 +7,12 @@
 		<include src="file://{resources}/scripts/custom_game/frostivus_notifications.js" />
 	</scripts>
 	<Panel class="NotificationPanel">
-		<Label id="Notification" class="Notification" text="#frostivus_game_objective_prepare"/>	
+		<Label id="NotificationDay" text="Day 1"/>	
+		<Panel id="NotificationTextPanel">
+			<Panel id="Content">
+				<Image id="TextImage"/>
+				<Label id="NotificationText" class="TextLabel"/>
+			</Panel>
+		</Panel>
 	</Panel>
 </root>
