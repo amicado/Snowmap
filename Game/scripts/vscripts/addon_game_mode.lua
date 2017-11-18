@@ -57,10 +57,12 @@ function FrostivusGameMode:InitGameMode()
 	GameRules:SetCustomGameEndDelay( 0 )
 	GameRules:SetCustomVictoryMessageDuration( 10 )
 	GameRules:GetGameModeEntity():SetCameraDistanceOverride(1500);
-	GameRules:SetPreGameTime( 5 )
+	GameRules:SetPreGameTime( 10 )
 	GameRules:SetStrategyTime( 0.0 )
 	GameRules:SetShowcaseTime( 0.0 )
 	GameRules:SetStartingGold(10000)
+
+	GameRules:GetGameModeEntity():SetAnnouncerDisabled(true);
 
 	_G.present_radiant = Entities:FindByName(nil,"npc_dota_frostivus_present_radiant")
 	_G.present_dire = Entities:FindByName(nil,"npc_dota_frostivus_present_dire")
@@ -232,6 +234,8 @@ function FrostivusGameMode:OnGameRulesStateChange()
 
 		tree_radiant:AddNewModifier(ward_radiant, nil, "modifier_invulnerable", nil)
 		tree_dire:AddNewModifier(ward_dire, nil, "modifier_invulnerable", nil)
+
+		CustomGameEventManager:Send_ServerToAllClients( "emit_sound", {sound = "frostivus_awaits_you"} );
 	elseif nNewState == DOTA_GAMERULES_STATE_STRATEGY_TIME then
 		--Add Instruction Panel call here
 		FrostivusGameMode:ForceAssignHeroes()

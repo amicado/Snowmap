@@ -1,6 +1,6 @@
 function EmitSound( data )
 {
-    $.Msg("Emit Sound");
+    //$.Msg("Emit Sound");
     Game.EmitSound(data.sound);
 }
 
