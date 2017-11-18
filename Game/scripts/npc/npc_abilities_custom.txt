@@ -17,7 +17,7 @@
 		// Stats
 		//-------------------------------------------------------------------------------------
 		"AbilityCastPoint" "0.5"
-		"AbilityCooldown"  "30"
+		"AbilityCooldown"  "25"
 		"AbilityManaCost"  "0"
 		"AbilityCastRange"        "%radius"
 
