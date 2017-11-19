@@ -17,7 +17,7 @@
 			//----------------------------------------------------------------
  
 			"Ability1"					"punch_time"			// Ability 1.
-			"Ability2"					"elder_titan_natural_order"			// Ability 2.
+			"Ability2"					"jack_in_the_box"			// Ability 2.
 			"Ability3"					"kobold_taskmaster_speed_aura"			// Ability 3.
 			"Ability4"					""			// Ability 4.
 			"Ability5"					""			// Ability 5.
@@ -46,7 +46,7 @@
  
 			// Status
 			//----------------------------------------------------------------
-			"StatusHealth"				"1"		// Base health.
+			"StatusHealth"				"1000"		// Base health.
  
 			// Team
 			//----------------------------------------------------------------

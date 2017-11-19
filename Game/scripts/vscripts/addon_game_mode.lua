@@ -78,6 +78,7 @@ function FrostivusGameMode:InitGameMode()
 	
 	CustomGameEventManager:RegisterListener( "endscreen_request_data", Dynamic_Wrap(FrostivusGameMode, "EndScreenRequestData"))
 	ListenToGameEvent( "entity_killed", Dynamic_Wrap( FrostivusGameMode, 'OnEntityKilled' ), self )
+	ListenToGameEvent( "entity_hurt", Dynamic_Wrap( FrostivusGameMode, 'OnEntityHurt' ), self )
 	ListenToGameEvent( "game_rules_state_change", Dynamic_Wrap( FrostivusGameMode, 'OnGameRulesStateChange' ), self )
 end
 
@@ -125,6 +126,14 @@ function FrostivusGameMode:EndScreenRequestData()
 	CustomGameEventManager:Send_ServerToAllClients("end_screen", {key="gameData", table=GetGameScores()})
 end
 
+function FrostivusGameMode:OnEntityHurt( event )
+	--DeepPrintTable(event.entindex_killed)
+	if present_dire ~= nil and EntIndexToHScript(event.entindex_killed) == present_dire then
+		present_dire:GetAbilityByIndex(1):CastAbility();
+	elseif present_radiant ~= nil and EntIndexToHScript(event.entindex_killed) == present_radiant then
+		present_radiant:GetAbilityByIndex(1):CastAbility();
+	end
+end
 
 function FrostivusGameMode:OnEntityKilled( event )
 	--FrostivusGameMode:UpdateScoreboard();

@@ -13,6 +13,11 @@ function Leave_Spawn(trigger)
 end
 
 function PresentAutoCast()
-	present_radiant:GetAbilityByIndex(0):CastAbility();
-	present_dire:GetAbilityByIndex(0):CastAbility();
+	if present_radiant ~= nil then
+		present_radiant:GetAbilityByIndex(0):CastAbility();
+	end
+
+	if present_dire ~= nil then
+		present_dire:GetAbilityByIndex(0):CastAbility();
+	end
 end
