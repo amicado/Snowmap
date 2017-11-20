@@ -183,4 +183,77 @@
 		}
 	
 	}
+
+	"secret_santa"
+	{
+		// General
+		//-------------------------------------------------------------------------------------
+		"BaseClass"        "ability_datadriven" 
+		"AbilityBehavior"  "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"			"jack_in_the_box"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+
+		"AbilityDamage"					"100"
+		
+
+
+		// Stats
+		//-------------------------------------------------------------------------------------
+		"AbilityCastPoint" "0.0"
+		"AbilityCooldown"  "30"
+		"AbilityManaCost"  "0"
+		"AbilityCastRange"        "%radius"
+
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"						"soundevents/game_sounds_heroes/game_sounds_ursa.vsndevts"
+			"particle"						"particles/jack_in_the_box_snow.vpcf"
+		}
+		
+
+		 "AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"				"450"
+			}
+		}
+
+		"OnSpellStart"
+		{
+		
+			"FireEffect"
+			{
+				"Target"					"CASTER"
+				"EffectName"				"particles/jack_in_the_box_snow.vpcf"
+				"EffectAttachType"			"start_at_origin"
+				"EffectRadius"				"%radius"
+			}
+		
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+				}
+				
+				"Action"
+				{
+					"Damage"
+					{
+						"Target"	"TARGET"
+						"Damage"	"%AbilityDamage"
+						"Type"		"DAMAGE_TYPE_PURE"
+					}
+				}
+			}
+		}
+	
+	}
 }

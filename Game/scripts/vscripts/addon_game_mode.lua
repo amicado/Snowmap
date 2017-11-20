@@ -1,6 +1,6 @@
 -- Generated from template
 
-_G.COUNTDOWNTIMERVALUE = 500
+_G.COUNTDOWNTIMERVALUE = 10
 _G.nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 _G.currentDay = 0
 
@@ -61,6 +61,9 @@ function FrostivusGameMode:InitGameMode()
 	GameRules:SetStrategyTime( 0.0 )
 	GameRules:SetShowcaseTime( 0.0 )
 	GameRules:SetStartingGold(10000)
+	GameRules:SetUseCustomHeroXPValues(true)
+	GameRules:SetGoldPerTick(3)
+	GameRules:SetGoldTickTime(1)
 
 	GameRules:GetGameModeEntity():SetAnnouncerDisabled(true);
 
@@ -99,7 +102,7 @@ function FrostivusGameMode:OnThink()
 
 			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_GOODGUYS, "ping_location", { spawn_location = tree_dire:GetAbsOrigin() } )
 			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_BADGUYS, "ping_location", { spawn_location = tree_radiant:GetAbsOrigin() } )
-        elseif currentDay == 25 then
+        elseif currentDay == 3 then
 			FrostivusGameMode:SpawnRoshan()
 			--GameRules:AddMinimapDebugPoint(1, roshan_radiant:GetCenter(), 255, 255, 255, 500, 3.0)
 			--GameRules:AddMinimapDebugPointForTeam(1, roshan_radiant:GetCenter(), 255, 255, 255, 1000, 3.0, DOTA_TEAM_BADGUYS)
@@ -237,7 +240,6 @@ function FrostivusGameMode:OnGameRulesStateChange()
 	if (nNewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS and currentDay == 0) then
 		--print( "OnGameRulesStateChange: Game In Progress" )
 		IncreaseDay()
-		print("OnGameRulesStateChange Changing day to "..currentDay)
 		CustomGameEventManager:Send_ServerToAllClients( "update_day", {day = currentDay} )
 		CustomGameEventManager:Send_ServerToAllClients( "update_notification", {day = currentDay} )
 
@@ -246,6 +248,13 @@ function FrostivusGameMode:OnGameRulesStateChange()
 
 		tree_radiant:AddNewModifier(ward_radiant, nil, "modifier_invulnerable", nil)
 		tree_dire:AddNewModifier(ward_dire, nil, "modifier_invulnerable", nil)
+
+
+		for nPlayerID = 0, ( DOTA_MAX_TEAM_PLAYERS - 1 ) do
+			if PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_GOODGUYS or PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_BADGUYS then
+				PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():SetCustomDeathXP(0)
+			end
+		end
 
 		CustomGameEventManager:Send_ServerToAllClients( "emit_sound", {sound = "frostivus_awaits_you"} );
 	elseif nNewState == DOTA_GAMERULES_STATE_STRATEGY_TIME then
