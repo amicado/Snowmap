@@ -301,7 +301,6 @@
 			"Model"						"models/props_structures/tower_good.mdl"// Model.
 			"SoundSet"					"Tower.Water"					// Name of sound set.
 			"Level"						"1"
-			"UnitLabel"                 "healing_ward"
   
 			// Armor
 			//----------------------------------------------------------------
