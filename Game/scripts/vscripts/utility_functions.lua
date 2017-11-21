@@ -41,27 +41,26 @@ end
 
 function IncreaseDay()
     currentDay = currentDay+1;
-    --Only spawn if not the 25th
-    if(currentDay >= 25) then
-        return;
-    end
-
+    
     -- give gold to all players
     GameRules:SetGoldPerTick(3*currentDay);
 
-    for nPlayerID = 0, ( DOTA_MAX_TEAM_PLAYERS - 1 ) do
-		if PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_GOODGUYS or PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_BADGUYS then
-            PlayerResource:HeroLevelUp(nPlayerID)
-		end
-	end
+
+    if(currentDay > 1 and currentDay <= 25) then
+        for nPlayerID = 0, ( DOTA_MAX_TEAM_PLAYERS - 1 ) do
+            if PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_GOODGUYS or PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_BADGUYS then
+                PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():HeroLevelUp(true);
+            end
+        end
+    end
     
 
-    if(spawn_dire) then
+    if(spawn_dire and currentDay < 25) then
         --print("Spawning Greevling on dire");
         local point1 = Entities:FindByName( nil, "santa_spawn_radiant"):GetAbsOrigin()
         CreateUnitByName("npc_dota_creature_greevil", point1, true, nil, nil, DOTA_TEAM_GOODGUYS)
         --GameRules:AddMinimapDebugPointForTeam(DOTA_TEAM_BADGUYS, unit:GetCenter(), 255, 255, 255, 1000, 2.0) -- (PlayerID, position, R, G, B, SizeofDot, Duration)
-    elseif(spawn_radiant) then
+    elseif(spawn_radiant and currentDay < 25) then
         --print("Spawning Greevling on radiant");
         
         local point2 = Entities:FindByName( nil, "santa_spawn_dire"):GetAbsOrigin()

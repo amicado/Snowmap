@@ -1,6 +1,6 @@
 -- Generated from template
 
-_G.COUNTDOWNTIMERVALUE = 5
+_G.COUNTDOWNTIMERVALUE = 60
 _G.nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 _G.currentDay = 0
 
@@ -61,6 +61,9 @@ function FrostivusGameMode:InitGameMode()
 	GameRules:SetStrategyTime( 0.0 )
 	GameRules:SetShowcaseTime( 0.0 )
 	GameRules:SetStartingGold(10000)
+	GameRules:SetUseCustomHeroXPValues(true)		
+	GameRules:SetGoldPerTick(3)		
+	GameRules:SetGoldTickTime(1)
 
 	GameRules:GetGameModeEntity():SetAnnouncerDisabled(true);
 
@@ -85,7 +88,10 @@ end
 -- Evaluate the state of the game
 function FrostivusGameMode:OnThink()
 	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+		
 		local currentDay = CountdownTimer()
+
+		FrostivusGameMode:GiveGold()
 
 		if currentDay == 17 then
 			ward_radiant:RemoveModifierByName("modifier_invulnerable");
@@ -112,6 +118,16 @@ function FrostivusGameMode:OnThink()
 		return nil
 	end
 	return 1
+end
+
+function FrostivusGameMode:GiveGold()
+	for playerID = 0, ( DOTA_MAX_TEAM_PLAYERS-1 ) do
+		if PlayerResource:GetTeam( playerID ) == DOTA_TEAM_GOODGUYS and present_radiant ~= nil then
+			PlayerResource:ModifyGold(playerID,2*currentDay,true,DOTA_ModifyGold_GameTick)
+		elseif PlayerResource:GetTeam( playerID ) == DOTA_TEAM_BADGUYS and present_dire ~= nil then
+			PlayerResource:ModifyGold(playerID,2*currentDay,true,DOTA_ModifyGold_GameTick)
+		end
+	end
 end
 
 
@@ -246,6 +262,12 @@ function FrostivusGameMode:OnGameRulesStateChange()
 
 		tree_radiant:AddNewModifier(ward_radiant, nil, "modifier_invulnerable", nil)
 		tree_dire:AddNewModifier(ward_dire, nil, "modifier_invulnerable", nil)
+
+		for nPlayerID = 0, ( DOTA_MAX_TEAM_PLAYERS - 1 ) do		
+			if PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_GOODGUYS or PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_BADGUYS then		
+				PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():SetCustomDeathXP(0)		
+			end		
+		end
 
 		CustomGameEventManager:Send_ServerToAllClients( "emit_sound", {sound = "frostivus_awaits_you"} );
 	elseif nNewState == DOTA_GAMERULES_STATE_STRATEGY_TIME then
