@@ -1343,7 +1343,7 @@
 			},
 			{
 				m_sSearchMaterial = "*"
-				m_sReplaceMaterial = "materials/santa_hat_vmat.vmat"
+				m_sReplaceMaterial = "materials/roshan_hat_texture.vmat"
 			},
 		]
 	}
