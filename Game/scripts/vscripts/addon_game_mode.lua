@@ -13,10 +13,6 @@ _G.ward_dire = nil;
 _G.tree_radiant = nil;
 _G.tree_dire = nil;
 
-_G.spawn_radiant = false;
-_G.spawn_dire = false;
-
-
 roshan_radiant = nil;
 roshan_dire = nil;
 
@@ -186,14 +182,12 @@ function FrostivusGameMode:OnEntityKilled( event )
 	elseif killedUnit:GetUnitName() == "npc_dota_frostivus_ward" then
 		if killedUnit:GetTeam() == DOTA_TEAM_GOODGUYS then
 			-- spawn greevlings on radiant side
-			_G.spawn_radiant = true;
 			_G.ward_radiant = nil;
-			
+			AddFOWViewer(DOTA_TEAM_BADGUYS, Entities:FindByName( nil, "santa_spawn_dire"):GetAbsOrigin(),2000,60*30,false);
 		elseif killedUnit:GetTeam() == DOTA_TEAM_BADGUYS then
 			-- spawn greevlings on dire side
-			_G.spawn_dire = true;
 			_G.ward_dire = nil;
-			
+			AddFOWViewer(DOTA_TEAM_GOODGUYS, Entities:FindByName( nil, "santa_spawn_radiant"):GetAbsOrigin(),2000,60*30,false);
 		end
 		GameRules:SendCustomMessage("<font color='#FF0000'> A ward has been destroyed! Vision is now granted over the center. </font><font color='#FF0000'>", 0, 8)
 		killedUnit:Destroy();
@@ -204,15 +198,11 @@ function FrostivusGameMode:OnEntityKilled( event )
 			-- spawn greevlings on radiant side
 			baublesToDestroy = Entities:FindAllByName("dota_frostivus_bauble_radiant");
 			
-			--vision for badguys
-			AddFOWViewer(DOTA_TEAM_BADGUYS, Entities:FindByName( nil, "santa_spawn_dire"):GetAbsOrigin(),2000,60*30,false);
 			_G.tree_radiant = nil;
 		elseif killedUnit:GetTeam() == DOTA_TEAM_BADGUYS then
 			-- spawn greevlings on dire side
 			baublesToDestroy = Entities:FindAllByName("dota_frostivus_bauble_dire");
-
-			--vision for goodguys
-			AddFOWViewer(DOTA_TEAM_GOODGUYS, Entities:FindByName( nil, "santa_spawn_radiant"):GetAbsOrigin(),2000,60*30,false);
+			
 			_G.tree_dire = nil;
 		end
 		

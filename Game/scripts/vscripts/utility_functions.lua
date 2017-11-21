@@ -55,12 +55,12 @@ function IncreaseDay()
     end
     
 
-    if(spawn_dire and currentDay < 25) then
+    if(tree_dire == nil and currentDay < 25) then
         --print("Spawning Greevling on dire");
         local point1 = Entities:FindByName( nil, "santa_spawn_radiant"):GetAbsOrigin()
         CreateUnitByName("npc_dota_creature_greevil", point1, true, nil, nil, DOTA_TEAM_GOODGUYS)
         --GameRules:AddMinimapDebugPointForTeam(DOTA_TEAM_BADGUYS, unit:GetCenter(), 255, 255, 255, 1000, 2.0) -- (PlayerID, position, R, G, B, SizeofDot, Duration)
-    elseif(spawn_radiant and currentDay < 25) then
+    elseif(tree_radiant == nil and currentDay < 25) then
         --print("Spawning Greevling on radiant");
         
         local point2 = Entities:FindByName( nil, "santa_spawn_dire"):GetAbsOrigin()
