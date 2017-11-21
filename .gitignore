@@ -13,6 +13,8 @@
 *.vjs_c
 *.vxml_c
 *.vcss_c
+*.vanim_c
+*.vmdl_c
 
 # Map files
 *.vpk
