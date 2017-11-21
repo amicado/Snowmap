@@ -1,6 +1,6 @@
 -- Generated from template
 
-_G.COUNTDOWNTIMERVALUE = 60
+_G.COUNTDOWNTIMERVALUE = 5
 _G.nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 _G.currentDay = 0
 
@@ -152,8 +152,11 @@ function FrostivusGameMode:OnEntityKilled( event )
 	local attackerUnit = EntIndexToHScript( event.entindex_attacker or -1 )
 	local killedUnit = EntIndexToHScript( event.entindex_killed )
 
-	print(killedUnit:GetName());
-
+	local playerID = nil;
+	if attackerUnit:GetPlayerOwner() ~= nil then
+		playerID = attackerUnit:GetPlayerOwner():GetPlayerID()
+	end
+	print(playerID);
 	
 	if killedUnit:GetUnitName() == "npc_dota_creature_mini_roshan" then
 		if killedUnit:GetTeam() == DOTA_TEAM_GOODGUYS then
@@ -171,7 +174,11 @@ function FrostivusGameMode:OnEntityKilled( event )
 		--self:_Victory()	
 		
 	elseif killedUnit:GetUnitName() == "npc_dota_frostivus_present" then
-		GameRules:SendCustomMessage("<font color='#FF0000'> A present has been destroyed! It no longer provides its auras. </font><font color='#FF0000'>", 0, 0)
+		if playerID ~= nil then
+			GameRules:SendCustomMessage("#presentKill", playerID, 0)
+		else
+			GameRules:SendCustomMessage("<font color='#40E0D0'> A present has been destroyed! It no longer provides its abilities. </font>", 0, 0)
+		end
 		if killedUnit:GetTeam() == DOTA_TEAM_GOODGUYS then
 			_G.present_radiant = nil;
 			
@@ -189,7 +196,11 @@ function FrostivusGameMode:OnEntityKilled( event )
 			_G.ward_dire = nil;
 			AddFOWViewer(DOTA_TEAM_GOODGUYS, Entities:FindByName( nil, "santa_spawn_radiant"):GetAbsOrigin(),2000,60*30,false);
 		end
-		GameRules:SendCustomMessage("<font color='#FF0000'> A ward has been destroyed! Vision is now granted over the center. </font><font color='#FF0000'>", 0, 8)
+		if playerID ~= nil then
+			GameRules:SendCustomMessage("#wardKill", playerID, 0)
+		else
+			GameRules:SendCustomMessage("<font color='#D8BFD8'> A ward has been destroyed! Vision is now granted over the center. </font>", 0, 0)
+		end
 		killedUnit:Destroy();
 
 	elseif killedUnit:GetUnitName() == "npc_dota_frostivus_tree" then
@@ -220,7 +231,12 @@ function FrostivusGameMode:OnEntityKilled( event )
 		Timers:CreateTimer( 1.25 , function()
 			killedUnit:Destroy();
 		end)
-		GameRules:SendCustomMessage("<font color='#FF0000'> A tree has been destroyed! Greevlings are now spawning at the center. </font><font color='#FF0000'>", 0, 0) 
+
+		if playerID ~= nil then
+			GameRules:SendCustomMessage("#treeKill", playerID, 2)
+		else
+			GameRules:SendCustomMessage("<font color='#228B22'> A tree has been destroyed! Greevlings are now spawning at the center. </font>", 0, 0)
+		end
 	end
 end
 
@@ -285,6 +301,9 @@ function FrostivusGameMode:SpawnRoshan()
     
 
     local point2 = Entities:FindByName( nil, "santa_spawn_dire"):GetAbsOrigin()
-    roshan_dire = CreateUnitByName("npc_dota_creature_mini_roshan", point2, true, nil, nil, DOTA_TEAM_BADGUYS)
+	roshan_dire = CreateUnitByName("npc_dota_creature_mini_roshan", point2, true, nil, nil, DOTA_TEAM_BADGUYS)
+	
+	roshan_radiant:SetForceAttackTarget(roshan_dire)
+	roshan_dire:SetForceAttackTarget(roshan_radiant)
 	
 end

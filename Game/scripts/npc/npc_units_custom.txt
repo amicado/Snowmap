@@ -166,6 +166,8 @@
 		"ModelScale"				".65"
 		"Level"						"1"
 		"ConsideredHero"			"1"
+		"CanBeDominated"               "0"
+		"DisableResistance"            "100.0"
 
 		// Armor
 		//----------------------------------------------------------------
@@ -184,12 +186,6 @@
 		"AttackRange"				"250"		// Range within a target can be attacked.
 		"ProjectileModel"			"particles/base_attacks/ranged_goodguy.vpcf" // Particle system model for projectile.
 		"ProjectileSpeed"			"1000"		// Speed of projectile.
-
-		// Bounty
-		//----------------------------------------------------------------
-		"BountyXP"					"100"		// Experience earn.
-		"BountyGoldMin"				"105"		// Gold earned min.
-		"BountyGoldMax"				"125"		// Gold earned max.
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -274,7 +270,7 @@
 		// Status
 		//----------------------------------------------------------------
 		"StatusHealth"				"500"		// Base health.
-		"StatusHealthRegen"			"20"		// Health regeneration rate.
+		"StatusHealthRegen"			"0"		// Health regeneration rate.
 		"StatusMana"				"250"		// Base mana.
 		"StatusManaRegen"			"5"			// Mana regeneration rate.
 
@@ -290,6 +286,11 @@
 		"VisionDaytimeRange"		"1400"		// Range of vision during day light.
 		"VisionNighttimeRange"		"1400"		// Range of vision at night time.
 
+		"creature"
+		{
+			"DisableClumpingBehavior"   "1"
+		}
+
 	}
 
 	"npc_dota_frostivus_fountain"
@@ -301,19 +302,7 @@
 			"SoundSet"					"Tower.Water"					// Name of sound set.
 			"Level"						"1"
 			"UnitLabel"                 "healing_ward"
- 
-			// Abilities
-			//----------------------------------------------------------------
- 
-			"Ability1"					""			// Ability 1.
-			"Ability2"					""			// Ability 2.
-			"Ability3"					""			// Ability 3.
-			"Ability4"					""			// Ability 4.
-			"Ability5"					""			// Ability 5.
-			"Ability6"					""			// Ability 6 - Extra.
-			"Ability7"					""			// Ability 7 - Extra.
-			"Ability8"					""			// Ability 8 - Extra.
- 
+  
 			// Armor
 			//----------------------------------------------------------------
 			"ArmorPhysical"				"1000"		// Physical protection.
