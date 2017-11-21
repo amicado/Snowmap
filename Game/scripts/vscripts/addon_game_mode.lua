@@ -60,6 +60,7 @@ function FrostivusGameMode:InitGameMode()
 	GameRules:SetUseCustomHeroXPValues(true)		
 	GameRules:SetGoldPerTick(3)		
 	GameRules:SetGoldTickTime(1)
+	GameRules:SetUseUniversalShopMode(true)
 
 	GameRules:GetGameModeEntity():SetAnnouncerDisabled(true);
 
