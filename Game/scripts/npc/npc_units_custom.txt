@@ -1,0 +1,364 @@
+// Dota Units File
+"DOTAUnits"
+{
+	"Version"	"1"	
+ 
+	"npc_dota_frostivus_present"
+		{
+			// General
+			//
+			"BaseClass"					"npc_dota_building"	// Class of entity of link to.
+			"MinimapIcon"				"present_minimap_icon"
+			"MinimapIconSize"			"600"
+			"Level"						"1"
+			"UnitLabel"                 "healing_ward"
+ 
+			// Abilities
+			//----------------------------------------------------------------
+ 
+			"Ability1"					"punch_time"			// Ability 1.
+			"Ability2"					"jack_in_the_box"			// Ability 2.
+			"Ability3"					"kobold_taskmaster_speed_aura"			// Ability 3.
+			"Ability4"					""			// Ability 4.
+			"Ability5"					""			// Ability 5.
+			"Ability6"					""			// Ability 6 - Extra.
+			"Ability7"					""			// Ability 7 - Extra.
+			"Ability8"					""			// Ability 8 - Extra.
+ 
+			// Armor
+			//----------------------------------------------------------------
+			"ArmorPhysical"				"-20"		// Physical protection.
+			"MagicalResistance"			"0"			// Magical protection.
+ 
+ 
+			// Bounds
+			//----------------------------------------------------------------
+			"BoundsHullName"			"DOTA_HULL_SIZE_TOWER"			// Hull type used for navigation/locomotion.
+			"ProjectileCollisionSize"	"50"
+			"RingRadius"				"130"
+			"HealthBarOffset"			"260"
+ 
+			// Movement
+			//----------------------------------------------------------------
+			"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"			// Type of locomotion - ground, air
+			"MovementSpeed"				"0"			// Speed
+			"MovementTurnRate"			"1.0"			// Turning rate.
+ 
+			// Status
+			//----------------------------------------------------------------
+			"StatusHealth"				"1000"		// Base health.
+ 
+			// Team
+			//----------------------------------------------------------------
+			"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+			"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+			"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+ 
+			// Vision
+			//----------------------------------------------------------------
+			"VisionDaytimeRange"		"1000"		// Range of vision during day light.
+			"VisionNighttimeRange"		"1000"		// Range of vision at night time.
+	}
+
+	"npc_dota_frostivus_tree"
+		{
+			// General
+			//
+			"BaseClass"					"npc_dota_building"	// Class of entity of link to.
+			"SoundSet"					"Tower.Water"					// Name of sound set.
+			"MinimapIcon"				"tree_minimap_icon"
+			"MinimapIconSize"			"600"
+			"Level"						"1"
+			"UnitLabel"                 "healing_ward"
+ 
+			// Abilities
+			//----------------------------------------------------------------
+ 
+ 
+			// Armor
+			//----------------------------------------------------------------
+			"ArmorPhysical"				"-20"		// Physical protection.
+			"MagicalResistance"			"0"			// Magical protection.
+ 
+			// Bounds
+			//----------------------------------------------------------------
+			"BoundsHullName"			"DOTA_HULL_SIZE_TOWER"			// Hull type used for navigation/locomotion.
+			"ProjectileCollisionSize"	"50"
+			"RingRadius"				"130"
+			"HealthBarOffset"			"260"
+ 
+			// Movement
+			//----------------------------------------------------------------
+			"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"			// Type of locomotion - ground, air
+			"MovementSpeed"				"0"			// Speed
+			"MovementTurnRate"			"1.0"			// Turning rate.
+ 
+			// Status
+			//----------------------------------------------------------------
+			"StatusHealth"				"1"		// Base health.
+ 
+			// Team
+			//----------------------------------------------------------------
+			"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+			"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+			"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+ 
+			// Vision
+			//----------------------------------------------------------------
+			"VisionDaytimeRange"		"1000"		// Range of vision during day light.
+			"VisionNighttimeRange"		"1000"		// Range of vision at night time.
+	}
+
+	"npc_dota_frostivus_ward"
+		{
+			// General
+			//
+			"BaseClass"					"npc_dota_building"	// Class of entity of link to.
+			"SoundSet"					"Tower.Water"					// Name of sound set.
+			"MinimapIcon"				"ward_minimap_icon"
+			"MinimapIconSize"			"600"
+			"Level"						"1"
+			"UnitLabel"                 "healing_ward"
+ 
+			// Armor
+			//----------------------------------------------------------------
+			"ArmorPhysical"				"-20"		// Physical protection.
+			"MagicalResistance"			"0"			// Magical protection.
+ 
+			// Bounds
+			//----------------------------------------------------------------
+			"BoundsHullName"			"DOTA_HULL_SIZE_TOWER"			// Hull type used for navigation/locomotion.
+			"ProjectileCollisionSize"	"50"
+			"RingRadius"				"130"
+			"HealthBarOffset"			"260"
+ 
+			// Movement
+			//----------------------------------------------------------------
+			"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"			// Type of locomotion - ground, air
+ 
+			// Status
+			//----------------------------------------------------------------
+			"StatusHealth"				"1"		// Base health.
+ 
+			// Team
+			//----------------------------------------------------------------
+			"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+			"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+			"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+ 
+			// Vision
+			//----------------------------------------------------------------
+			"VisionDaytimeRange"		"1000"		// Range of vision during day light.
+			"VisionNighttimeRange"		"1000"		// Range of vision at night time.
+	}
+
+		//=================================================================================
+	// Creature: Mini Roshan
+	//=================================================================================
+	"npc_dota_creature_mini_roshan"
+	{
+		// General
+		//
+		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
+		"Model"						//"models/creeps/roshan/roshan.vmdl"	// Model.
+"models/roshan_lod1_new.vmdl"	// Model.
+		"SoundSet"					"Roshan"					// Name of sound set.
+		"ModelScale"				".65"
+		"Level"						"1"
+		"ConsideredHero"			"1"
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"120"			// Physical protection.
+		"MagicalResistance"			"75"		// Magical protection (percentage).
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"200"		// Damage range min.
+		"AttackDamageMax"			"300"		// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"1"			// Speed of attack.
+		"AttackAnimationPoint"		"0.3"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"		// Range within a target can be acquired.
+		"AttackRange"				"250"		// Range within a target can be attacked.
+		"ProjectileModel"			"particles/base_attacks/ranged_goodguy.vpcf" // Particle system model for projectile.
+		"ProjectileSpeed"			"1000"		// Speed of projectile.
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"100"		// Experience earn.
+		"BountyGoldMin"				"105"		// Gold earned min.
+		"BountyGoldMax"				"125"		// Gold earned max.
+
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"			// Hull type used for navigation/locomotion.
+		"RingRadius"				"60"
+		"HealthBarOffset"			"200"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
+		"MovementSpeed"				"270"		// Speed
+		"MovementTurnRate"			"1.0"		// Turning rate.
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"1"		// Base health.
+		"StatusHealthRegen"			"20"		// Health regeneration rate.
+		"StatusMana"				"250"		// Base mana.
+		"StatusManaRegen"			"5"			// Mana regeneration rate.
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_NEUTRALS"			// Team name.
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_LIGHT"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1400"		// Range of vision during day light.
+		"VisionNighttimeRange"		"1400"		// Range of vision at night time.
+
+	}	
+
+	"npc_dota_creature_greevil"
+	{
+		// General
+		//
+		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
+		"Model"						"models/creeps/mega_greevil/mega_greevil.vmdl"	// Model."models/roshan_lod1.vmdl"	// Model.
+		"SoundSet"					"Greevil"					// Name of sound set.
+		"ModelScale"				"1"
+		"Level"						"1"
+		"ConsideredHero"			"1"
+		
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"0"			// Physical protection.
+		"MagicalResistance"			"90"		// Magical protection (percentage).
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"30"		// Damage range min.
+		"AttackDamageMax"			"30"		// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"1"			// Speed of attack.
+		"AttackAnimationPoint"		"0.3"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"		// Range within a target can be acquired.
+		"AttackRange"				"250"		// Range within a target can be attacked.
+		"ProjectileModel"			"particles/base_attacks/ranged_goodguy.vpcf" // Particle system model for projectile.
+		"ProjectileSpeed"			"1000"		// Speed of projectile.
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"0"		// Experience earn.
+		"BountyGoldMin"				"0"		// Gold earned min.
+		"BountyGoldMax"				"0"		// Gold earned max.
+
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"			// Hull type used for navigation/locomotion.
+		"RingRadius"				"60"
+		"HealthBarOffset"			"200"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
+		"MovementSpeed"				"270"		// Speed
+		"MovementTurnRate"			"1.0"		// Turning rate.
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"500"		// Base health.
+		"StatusHealthRegen"			"20"		// Health regeneration rate.
+		"StatusMana"				"250"		// Base mana.
+		"StatusManaRegen"			"5"			// Mana regeneration rate.
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_NEUTRALS"			// Team name.
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_LIGHT"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1400"		// Range of vision during day light.
+		"VisionNighttimeRange"		"1400"		// Range of vision at night time.
+
+	}
+
+	"npc_dota_frostivus_fountain"
+		{
+			// General
+			//
+			"BaseClass"					"npc_dota_tower"	// Class of entity of link to.
+			"Model"						"models/props_structures/tower_good.mdl"// Model.
+			"SoundSet"					"Tower.Water"					// Name of sound set.
+			"Level"						"1"
+			"UnitLabel"                 "healing_ward"
+ 
+			// Abilities
+			//----------------------------------------------------------------
+ 
+			"Ability1"					""			// Ability 1.
+			"Ability2"					""			// Ability 2.
+			"Ability3"					""			// Ability 3.
+			"Ability4"					""			// Ability 4.
+			"Ability5"					""			// Ability 5.
+			"Ability6"					""			// Ability 6 - Extra.
+			"Ability7"					""			// Ability 7 - Extra.
+			"Ability8"					""			// Ability 8 - Extra.
+ 
+			// Armor
+			//----------------------------------------------------------------
+			"ArmorPhysical"				"1000"		// Physical protection.
+			"MagicalResistance"			"100"			// Magical protection.
+ 
+			// Attack
+			//----------------------------------------------------------------
+			"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+			"AttackDamageMin"			"1000"		// Damage range min.
+			"AttackDamageMax"			"1000"		// Damage range max.
+			"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+			"AttackRate"				"0.01"			// Speed of attack.
+			"AttackAnimationPoint"		"0.0"		// Normalized time in animation cycle to attack.
+			"AttackAcquisitionRange"	"800"		// Range within a target can be acquired.
+			"AttackRange"				"800"		// Range within a target can be attacked.
+			"ProjectileModel"			"particles/base_attacks/ranged_tower_good.vpcf"		// Particle system model for projectile.
+			"ProjectileSpeed"			"1250"		// Speed of projectile.
+ 
+			// Bounds
+			//----------------------------------------------------------------
+			"BoundsHullName"			"DOTA_HULL_SIZE_TOWER"			// Hull type used for navigation/locomotion.
+			"ProjectileCollisionSize"	"50"
+			"RingRadius"				"130"
+			"HealthBarOffset"			"260"
+ 
+			// Movement
+			//----------------------------------------------------------------
+			"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"			// Type of locomotion - ground, air
+			"MovementSpeed"				"0"			// Speed
+			"MovementTurnRate"			"1.0"			// Turning rate.
+ 
+			// Status
+			//----------------------------------------------------------------
+			"StatusHealth"				"99999"		// Base health.
+			"StatusHealthRegen"			"10000"			// Health regeneration rate.
+			"StatusMana"				"0"			// Base mana.
+			"StatusManaRegen"			"0"			// Mana regeneration rate.
+ 
+			"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+			"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+			"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+ 
+			// Vision
+			//----------------------------------------------------------------
+			"VisionDaytimeRange"		"1000"		// Range of vision during day light.
+			"VisionNighttimeRange"		"1000"		// Range of vision at night time.
+	}
+}

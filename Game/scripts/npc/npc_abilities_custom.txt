@@ -1,0 +1,259 @@
+// Dota Heroes File
+"DOTAAbilities"
+{
+	"Version"		"1"
+
+	"punch_time"
+	{
+		// General
+		//-------------------------------------------------------------------------------------
+		"BaseClass"        "ability_datadriven" 
+		"AbilityBehavior"  "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+   		"AbilityUnitTargetType"  "DOTA_UNIT_TARGET_HERO"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ALLIES_YES"
+		"AbilityTextureName"			"punsh_cup"
+
+		// Stats
+		//-------------------------------------------------------------------------------------
+		"AbilityCastPoint" "0.0"
+		"AbilityCooldown"  "25"
+		"AbilityManaCost"  "0"
+		"AbilityCastRange"        "%radius"
+
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"		"particles/punch_time_cast.vpcf"
+			"particle"		"particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
+			"soundfile"		"sounds/weapons/hero/ogre_magi/bloodlust_cast.vsnd"
+			"soundfile"		"sounds/weapons/hero/ogre_magi/bloodlust_target.vsnd"
+		}
+		
+
+		 "AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"duration" "25"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"radius" "600"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_hp_regen" "10"
+			}
+			"04"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_mana_regen" "10"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"
+					{
+						"Center"  				"CASTER"
+						"Radius" 				"%radius"
+						"Teams" 				"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+						"Types" 				"DOTA_UNIT_TARGET_HERO"
+					}
+
+				"ModifierName"			"modifier_drinking_punch"
+				
+			}
+
+			
+			"FireEffect"
+			{
+				"EffectName"		"particles/punch_time_cast.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"Target"			"CASTER"
+			}
+			
+			"FireSound"
+			{
+				"EffectName"	"Hero_OgreMagi.Bloodlust.Cast"
+				"Target"		"CASTER"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_drinking_punch"
+			{
+				"Duration"	"%duration"
+			
+				"EffectName"		"particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"IsPurgable" "1"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_hp_regen"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%bonus_mana_regen"
+				}
+				
+			}
+		}
+	
+	}
+
+	"jack_in_the_box"
+	{
+		// General
+		//-------------------------------------------------------------------------------------
+		"BaseClass"        "ability_datadriven" 
+		"AbilityBehavior"  "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
+   		"AbilityUnitTargetType"  "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitDamageType" 	"DAMAGE_TYPE_PURE"
+		"AbilityTextureName"			"jack_in_the_box"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+
+		"AbilityDamage"					"100"
+		
+
+
+		// Stats
+		//-------------------------------------------------------------------------------------
+		"AbilityCastPoint" "0.0"
+		"AbilityCooldown"  "30"
+		"AbilityManaCost"  "0"
+		"AbilityCastRange"        "%radius"
+
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"						"soundevents/game_sounds_heroes/game_sounds_ursa.vsndevts"
+			"particle"						"particles/jack_in_the_box_snow.vpcf"
+		}
+		
+
+		 "AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"				"450"
+			}
+		}
+
+		"OnSpellStart"
+		{
+		
+			"FireEffect"
+			{
+				"Target"					"CASTER"
+				"EffectName"				"particles/jack_in_the_box_snow.vpcf"
+				"EffectAttachType"			"start_at_origin"
+				"EffectRadius"				"%radius"
+			}
+		
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+				}
+				
+				"Action"
+				{
+					"Damage"
+					{
+						"Target"	"TARGET"
+						"Damage"	"%AbilityDamage"
+						"Type"		"DAMAGE_TYPE_PURE"
+					}
+				}
+			}
+		}
+	
+	}
+
+	"secret_santa"
+	{
+		// General
+		//-------------------------------------------------------------------------------------
+		"BaseClass"        "ability_datadriven" 
+		"AbilityBehavior"  "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"			"jack_in_the_box"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+
+		"AbilityDamage"					"100"
+		
+
+
+		// Stats
+		//-------------------------------------------------------------------------------------
+		"AbilityCastPoint" "0.0"
+		"AbilityCooldown"  "30"
+		"AbilityManaCost"  "0"
+		"AbilityCastRange"        "%radius"
+
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"						"soundevents/game_sounds_heroes/game_sounds_ursa.vsndevts"
+			"particle"						"particles/jack_in_the_box_snow.vpcf"
+		}
+		
+
+		 "AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"				"450"
+			}
+		}
+
+		"OnSpellStart"
+		{
+		
+			"FireEffect"
+			{
+				"Target"					"CASTER"
+				"EffectName"				"particles/jack_in_the_box_snow.vpcf"
+				"EffectAttachType"			"start_at_origin"
+				"EffectRadius"				"%radius"
+			}
+		
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+				}
+				
+				"Action"
+				{
+					"Damage"
+					{
+						"Target"	"TARGET"
+						"Damage"	"%AbilityDamage"
+						"Type"		"DAMAGE_TYPE_PURE"
+					}
+				}
+			}
+		}
+	
+	}
+}
