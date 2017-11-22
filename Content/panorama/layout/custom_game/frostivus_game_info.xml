@@ -12,8 +12,8 @@
 
 		<Label id="ConceptHeader" class="Header" text="#frostivus_game_info_header_concept" />
 		<Label id="BriefDescription" text="#frostivus_brief_description" />
-		<Label id="HowToPlayHeader" class="Header" html="true" text="#frostivus_game_info_header_how_to_play" />
-		<Label id="Description" html="true" text="#frostivus_game_info_time" />
+		<Label id="HowToPlayHeader" class="Header" text="#frostivus_game_info_header_how_to_play" />
+		<Label id="Description" text="#frostivus_game_info_time" />
 		
 		<Label id="LocationHeader" class="Header" text="#frostivus_game_info_header_location" />
 		<Label id="Location" text="#frostivus_game_info_location" />
@@ -48,7 +48,9 @@
 		<Label id="Location4_Text" text="#frostivus_game_info_location4_text" />
 		<Image id="LocationImage4" class="ObjectiveImage" src="file://{images}/custom_game/description_present.png" />
 
+		<Label id="OutroHeader" class="Header" text="#frostivus_game_info_outro_header" />
 		<Image id="OutroImage" src="file://{images}/custom_game/hf.png" />
+		<Label id="OutroText" text="#frostivus_game_info_outro_text" />
 
 	</Panel>
 </root>

@@ -1,6 +1,6 @@
 -- Generated from template
 
-_G.COUNTDOWNTIMERVALUE = 500
+_G.COUNTDOWNTIMERVALUE = 5
 _G.nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 _G.currentDay = 0
 
@@ -56,11 +56,12 @@ function FrostivusGameMode:InitGameMode()
 	GameRules:SetPreGameTime( 10 )
 	GameRules:SetStrategyTime( 0.0 )
 	GameRules:SetShowcaseTime( 0.0 )
-	GameRules:SetStartingGold(10000)
+	GameRules:SetStartingGold(1000)
 	GameRules:SetUseCustomHeroXPValues(true)		
 	GameRules:SetGoldPerTick(3)		
 	GameRules:SetGoldTickTime(1)
 	GameRules:SetUseUniversalShopMode(true)
+	GameRules:SetRuneSpawnTime(-1)
 
 	GameRules:GetGameModeEntity():SetAnnouncerDisabled(true);
 
@@ -84,8 +85,8 @@ end
 
 -- Evaluate the state of the game
 function FrostivusGameMode:OnThink()
-	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-		
+	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS and GameRules:IsGamePaused() == false then
+
 		local currentDay = CountdownTimer()
 
 		FrostivusGameMode:GiveGold()
@@ -278,6 +279,7 @@ function FrostivusGameMode:OnGameRulesStateChange()
 
 		tree_radiant:AddNewModifier(ward_radiant, nil, "modifier_invulnerable", nil)
 		tree_dire:AddNewModifier(ward_dire, nil, "modifier_invulnerable", nil)
+		GameRules:SetRuneSpawnTime(COUNTDOWNTIMERVALUE)
 
 		for nPlayerID = 0, ( DOTA_MAX_TEAM_PLAYERS - 1 ) do		
 			if PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_GOODGUYS or PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_BADGUYS then		

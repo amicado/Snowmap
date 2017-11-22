@@ -8,9 +8,7 @@
 		// General
 		//-------------------------------------------------------------------------------------
 		"BaseClass"        "ability_datadriven" 
-		"AbilityBehavior"  "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-		"AbilityUnitTargetTeam"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-   		"AbilityUnitTargetType"  "DOTA_UNIT_TARGET_HERO"
+		"AbilityBehavior"  "DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_TARGET" // vllt aoe ?
 		"SpellImmunityType"				"SPELL_IMMUNITY_ALLIES_YES"
 		"AbilityTextureName"			"punsh_cup"
 
@@ -25,7 +23,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"precache"
 		{
-			"particle"		"particles/units/heroes/hero_tusk/tusk_walruspunch_start_magic.vpcf"
+			"particle"		"particles/ui/ui_slark_goalburst_water.vpcf"
 			"particle" 		"particles/punch_time_cast.vpcf"
 		}
 		
@@ -35,7 +33,7 @@
 			"01"
 			{
 				"var_type" "FIELD_INTEGER"
-				"duration" "25"
+				"duration" "2"
 			}
 			"02"
 			{
@@ -73,8 +71,8 @@
 			
 			"FireEffect"
 			{
-				"EffectName"		"particles/punch_time_cast.vpcf" //played on the present
-				"EffectAttachType"	"follow_origin"
+				"EffectName"		"particles/ui/ui_slark_goalburst_water.vpcf" //played on the present
+				"EffectAttachType"	"follow_overhead"
 				"Target"			"CASTER"
 			}
 			
@@ -92,7 +90,7 @@
 				"Duration"	"%duration"
 			
 				"EffectName"		"particles/punch_time_cast.vpcf" //played on the hero
-				"EffectAttachType"	"follow_origin"
+				"EffectAttachType"	"follow_overhead"
 				"IsPurgable" "1"
 
 				"Properties"
