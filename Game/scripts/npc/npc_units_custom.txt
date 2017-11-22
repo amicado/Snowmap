@@ -11,6 +11,7 @@
 			"MinimapIcon"				"present_minimap_icon"
 			"MinimapIconSize"			"600"
 			"Level"						"1"
+			"UnitLabel"                 "healing_ward"
  
 			// Abilities
 			//----------------------------------------------------------------
@@ -299,8 +300,6 @@
 			"BaseClass"					"npc_dota_tower"	// Class of entity of link to.
 			"Model"						"models/props_structures/tower_good.mdl"// Model.
 			"SoundSet"					"Tower.Water"					// Name of sound set.
-			"MinimapIcon"               "minimap_ancient"
-			"MinimapIconSize"			"800"
 			"Level"						"1"
   
 			// Armor
