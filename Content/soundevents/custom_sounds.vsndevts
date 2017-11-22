@@ -1,13 +1,103 @@
-
-
-						
 "frostivus_awaits_you"
 {
-   {
-		type = "dota_update_vo_switch"
-		vsnd_files = 
-		[
-			"sounds/frostivus_awaits_you.vsnd",
-		]
-	}
+   "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"              "sos_reference_stack"
+                "reference_stack"       "dota_update_vo_switch"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                              "value0"        "sounds/frostivus_awaits_you.vsnd"
+                        }
+                    }
+                    "volume"            {   "value"     "15.00000"  }
+                }
+            }
+        }
+    }
+}
+
+"objective_forest"
+{
+	"operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"              "sos_reference_stack"
+                "reference_stack"       "dota_update_vo_switch"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                              "value0"        "sounds/objective_forest_melody_pitched_high.vsnd"
+                        }
+                    }
+                    "volume"            {   "value"     "15.00000"  }
+                }
+            }
+        }
+    }
+}
+
+"objective_lakes"
+{
+	"operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"              "sos_reference_stack"
+                "reference_stack"       "dota_update_vo_switch"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                              "value0"        "sounds/objective_lakes_melody_pitched_high.vsnd"
+                        }
+                    }
+                    "volume"            {   "value"     "15.00000"  }
+                }
+            }
+        }
+    }
+}
+
+"objective_mountains"
+{
+	"operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"              "sos_reference_stack"
+                "reference_stack"       "dota_update_vo_switch"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                              "value0"        "sounds/objective_mountain_melody_pitched_high.vsnd"
+                        }
+                    }
+                    "volume"            {   "value"     "15.00000"  }
+                }
+            }
+        }
+    }
 }

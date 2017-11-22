@@ -16,11 +16,5 @@
 	"frostivus_game_info_tip02"						"Items can be given to teammates or sold at your base."
 	"frostivus_game_info_tip03"						"You may need to coordinate with an opposing team to take out a strong opponent."
 	"frostivus_game_info_tip04"						"The fewer kills your team has, the stronger items you will recieve from a delivery."
-	"frostivus_game_objective_prepare"				"Prepare yourself! The battle about the mountain is starting soon."
-	"frostivus_game_objective_mountain"				"The objective on the mountain is now available."
-	"frostivus_game_objective_forest"				"The objective in the forest is available soon."
-	"frostivus_game_objective_lake"					"The objective around the lake is available soon."
-	"frostivus_game_rosha_claus"					"Ho ho ho! Rosha Claus is coming. Prepare yourself."
-
 }
 
