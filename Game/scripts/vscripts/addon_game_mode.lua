@@ -73,9 +73,6 @@ function FrostivusGameMode:InitGameMode()
 	_G.ward_radiant = Entities:FindByName(nil,"npc_dota_frostivus_ward_radiant")
 	_G.ward_dire = Entities:FindByName(nil,"npc_dota_frostivus_ward_dire")
 
-	ward_radiant:StartGestureWithPlaybackRate(ACT_DOTA_IDLE,0.8)
-	ward_dire:StartGestureWithPlaybackRate(ACT_DOTA_IDLE,0.9)
-
 	_G.tree_radiant = Entities:FindByName(nil,"npc_dota_frostivus_tree_radiant")
 	_G.tree_dire = Entities:FindByName(nil,"npc_dota_frostivus_tree_dire")
 	
@@ -276,6 +273,8 @@ function FrostivusGameMode:OnGameRulesStateChange()
 		ward_radiant:AddNewModifier(ward_radiant, nil, "modifier_invulnerable", nil)
 		ward_dire:AddNewModifier(ward_dire, nil, "modifier_invulnerable", nil)
 		
+		ward_radiant:StartGestureWithPlaybackRate(ACT_DOTA_IDLE,0.8)
+		ward_dire:StartGestureWithPlaybackRate(ACT_DOTA_IDLE,0.9)
 
 		tree_radiant:AddNewModifier(ward_radiant, nil, "modifier_invulnerable", nil)
 		tree_dire:AddNewModifier(ward_dire, nil, "modifier_invulnerable", nil)

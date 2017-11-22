@@ -8,7 +8,7 @@
 		// General
 		//-------------------------------------------------------------------------------------
 		"BaseClass"        "ability_datadriven" 
-		"AbilityBehavior"  "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+		"AbilityBehavior"  "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 		"AbilityUnitTargetTeam"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
    		"AbilityUnitTargetType"  "DOTA_UNIT_TARGET_HERO"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ALLIES_YES"
@@ -26,7 +26,7 @@
 		"precache"
 		{
 			"particle"		"particles/units/heroes/hero_tusk/tusk_walruspunch_start_magic.vpcf"
-			"particle" 		"particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_tornado.vpcf"
+			"particle" 		"particles/punch_time_cast.vpcf"
 		}
 		
 
@@ -73,7 +73,7 @@
 			
 			"FireEffect"
 			{
-				"EffectName"		"particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_tornado.vpcf" //played on the present
+				"EffectName"		"particles/punch_time_cast.vpcf" //played on the present
 				"EffectAttachType"	"follow_origin"
 				"Target"			"CASTER"
 			}
@@ -91,7 +91,7 @@
 			{
 				"Duration"	"%duration"
 			
-				"EffectName"		"particles/units/heroes/hero_tusk/tusk_walruspunch_start_magic.vpcf" //played on the hero
+				"EffectName"		"particles/punch_time_cast.vpcf" //played on the hero
 				"EffectAttachType"	"follow_origin"
 				"IsPurgable" "1"
 
