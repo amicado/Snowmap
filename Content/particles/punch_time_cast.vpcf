@@ -30,8 +30,8 @@
 	[
 		{
 			_class = "C_OP_BasicMovement"
-			m_Gravity = [ 0.0, 0.0, -20.0 ]
-			m_fDrag = 0.1
+			m_Gravity = [ 0.0, 0.0, -300.0 ]
+			m_fDrag = 0.113
 		},
 		{
 			_class = "C_OP_Decay"
@@ -39,7 +39,6 @@
 		{
 			_class = "C_OP_InterpolateRadius"
 			m_flBias = 0.25
-			m_flEndScale = 0.0
 		},
 		{
 			_class = "C_OP_FadeOutSimple"
@@ -55,12 +54,12 @@
 	[
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flRadiusMax = 73.3445
-			m_flRadiusMin = 31.25
+			m_flRadiusMax = 32.0045
+			m_flRadiusMin = 9.6605
 		},
 		{
 			_class = "C_INIT_RandomLifeTime"
-			m_fLifetimeMax = 1.86
+			m_fLifetimeMax = 1.26
 			m_fLifetimeMin = 1.24
 		},
 		{
@@ -94,8 +93,8 @@
 		},
 		{
 			_class = "C_INIT_RandomTrailLength"
-			m_flMinLength = 0.3
-			m_flMaxLength = 0.4
+			m_flMinLength = 0.4
+			m_flMaxLength = 0.2
 		},
 		{
 			_class = "C_INIT_CreateWithinSphere"
@@ -106,14 +105,8 @@
 	m_Emitters = 
 	[
 		{
-			_class = "C_OP_ContinuousEmitter"
-			m_flEmissionDuration = 10.0
-			m_flEmitRate = 128.6
-			m_bDisableOperator = true
-		},
-		{
 			_class = "C_OP_NoiseEmitter"
-			m_flEmissionDuration = 0.2
+			m_flEmissionDuration = 0.3
 			m_flNoiseScale = 3.0
 		},
 	]
