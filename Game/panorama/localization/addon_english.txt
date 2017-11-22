@@ -1,7 +1,7 @@
 "addon"
 {
-	"addonname"										"Frostivus"
-	"DOTA_GAMEMODE_15"								"Frostivus"
+	"addonname"										"Frostication"
+	"DOTA_GAMEMODE_15"								"Frostication"
 	
 	"frostivus_game_info_header_objective"			"Objective:"
 	"frostivus_brief_description"					"Destroy the stategic objectives of your enemys and prevent them of destroying yours. "
