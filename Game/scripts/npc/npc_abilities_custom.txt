@@ -15,7 +15,7 @@
 		// Stats
 		//-------------------------------------------------------------------------------------
 		"AbilityCastPoint" "0.0"
-		"AbilityCooldown"  "25"
+		"AbilityCooldown"  "30"
 		"AbilityManaCost"  "0"
 		"AbilityCastRange"        "%radius"
 
@@ -33,7 +33,7 @@
 			"01"
 			{
 				"var_type" "FIELD_INTEGER"
-				"duration" "15"
+				"duration" "30"
 			}
 			"02"
 			{
@@ -123,7 +123,7 @@
 		// Stats
 		//-------------------------------------------------------------------------------------
 		"AbilityCastPoint" "0.0"
-		"AbilityCooldown"  "30"
+		"AbilityCooldown"  "20"
 		"AbilityManaCost"  "0"
 		"AbilityCastRange"        "%radius"
 
