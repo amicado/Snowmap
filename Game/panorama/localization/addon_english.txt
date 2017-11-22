@@ -16,10 +16,6 @@
 	"frostivus_game_info_location3_text"		    "If you destroy the Ward, you will receive unobstructed vision of the mountains until the end of the game."
 	"frostivus_game_info_location4"		            "Rosha Claus at the Mountains (Day 25)"
 	"frostivus_game_info_location4_text"		    "When you kill the enemies Rosha Claus, you win the game."
-	"frostivus_game_info_tips_header"				"Tips:"
-	"frostivus_game_info_tip01"						"All three objectives will help you in the final fight."
-	"frostivus_game_info_tip02"						"Items can be given to teammates or sold at your base."
-	"frostivus_game_info_tip03"						"You may need to coordinate with an opposing team to take out a strong opponent."
-	"frostivus_game_info_tip04"						"The fewer kills your team has, the stronger items you will recieve from a delivery."
+	"frostivus_game_info_outro"		    		"HAVE FUN AND MERRY CHRISTMAS!"
 }
 

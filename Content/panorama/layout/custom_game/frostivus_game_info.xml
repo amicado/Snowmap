@@ -47,6 +47,8 @@
 		</Panel>
 		<Label id="Location4_Text" text="#frostivus_game_info_location4_text" />
 		<Image id="LocationImage4" class="ObjectiveImage" src="file://{images}/custom_game/description_present.png" />
-					
+
+		<Image id="OutroImage" src="file://{images}/custom_game/hf.png" />
+
 	</Panel>
 </root>

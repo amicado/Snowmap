@@ -39,3 +39,16 @@ Label
     height: 25px;
     margin-right: 10px;
 }
+
+#Outro{
+    margin-top: 20px;
+    font-size: 30px;
+    color:white;
+    font-weight: bold;
+    font-family: "Courier New";
+}
+
+#OutroImage{
+    margin-top: 20px;
+    height: 200px;
+}

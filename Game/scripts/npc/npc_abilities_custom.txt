@@ -8,7 +8,7 @@
 		// General
 		//-------------------------------------------------------------------------------------
 		"BaseClass"        "ability_datadriven" 
-		"AbilityBehavior"  "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityBehavior"  "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 		"AbilityUnitTargetTeam"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
    		"AbilityUnitTargetType"  "DOTA_UNIT_TARGET_HERO"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ALLIES_YES"
@@ -25,10 +25,8 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"precache"
 		{
-			"particle"		"particles/punch_time_cast.vpcf"
-			"particle"		"particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
-			"soundfile"		"sounds/weapons/hero/ogre_magi/bloodlust_cast.vsnd"
-			"soundfile"		"sounds/weapons/hero/ogre_magi/bloodlust_target.vsnd"
+			"particle"		"particles/units/heroes/hero_tusk/tusk_walruspunch_start_magic.vpcf"
+			"particle" 		"particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_tornado.vpcf"
 		}
 		
 
@@ -75,14 +73,14 @@
 			
 			"FireEffect"
 			{
-				"EffectName"		"particles/punch_time_cast.vpcf"
+				"EffectName"		"particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_tornado.vpcf" //played on the present
 				"EffectAttachType"	"follow_origin"
 				"Target"			"CASTER"
 			}
 			
 			"FireSound"
 			{
-				"EffectName"	"Hero_OgreMagi.Bloodlust.Cast"
+				"EffectName"	"punch_time"
 				"Target"		"CASTER"
 			}
 		}
@@ -93,7 +91,7 @@
 			{
 				"Duration"	"%duration"
 			
-				"EffectName"		"particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
+				"EffectName"		"particles/units/heroes/hero_tusk/tusk_walruspunch_start_magic.vpcf" //played on the hero
 				"EffectAttachType"	"follow_origin"
 				"IsPurgable" "1"
 
@@ -135,7 +133,6 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"precache"
 		{
-			"soundfile"						"soundevents/game_sounds_heroes/game_sounds_ursa.vsndevts"
 			"particle"						"particles/jack_in_the_box_snow.vpcf"
 		}
 		
@@ -158,6 +155,12 @@
 				"EffectName"				"particles/jack_in_the_box_snow.vpcf"
 				"EffectAttachType"			"start_at_origin"
 				"EffectRadius"				"%radius"
+			}
+
+			"FireSound"
+			{
+				"EffectName"	"jack_in_the_box"
+				"Target"		"CASTER"
 			}
 		
 			"ActOnTargets"
