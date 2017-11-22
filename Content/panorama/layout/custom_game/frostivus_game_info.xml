@@ -45,7 +45,7 @@
 			<Image id="LocationImage4" class="ListIconImage" src="file://{images}/custom_game/endscreen/roshan.png" />
 			<Label id="Location4_Title" class="Location" text="#frostivus_game_info_location4" />
 		</Panel>
-		<Label id="Location4_Text" text="#frostivus_game_info_location3_text" />
+		<Label id="Location4_Text" text="#frostivus_game_info_location4_text" />
 		<Image id="LocationImage4" class="ObjectiveImage" src="file://{images}/custom_game/description_present.png" />
 					
 	</Panel>

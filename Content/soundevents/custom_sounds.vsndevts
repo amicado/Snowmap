@@ -17,7 +17,7 @@
                               "value0"        "sounds/frostivus_awaits_you.vsnd"
                         }
                     }
-                    "volume"            {   "value"     "15.00000"  }
+                    "volume"            {   "value"     "5.00000"  }
                 }
             }
         }
@@ -43,7 +43,7 @@
                               "value0"        "sounds/objective_forest_melody_pitched_high.vsnd"
                         }
                     }
-                    "volume"            {   "value"     "15.00000"  }
+                    "volume"            {   "value"     "5.00000"  }
                 }
             }
         }
@@ -69,7 +69,7 @@
                               "value0"        "sounds/objective_lakes_melody_pitched_high.vsnd"
                         }
                     }
-                    "volume"            {   "value"     "15.00000"  }
+                    "volume"            {   "value"     "5.00000"  }
                 }
             }
         }
@@ -95,7 +95,7 @@
                               "value0"        "sounds/objective_mountain_melody_pitched_high.vsnd"
                         }
                     }
-                    "volume"            {   "value"     "15.00000"  }
+                    "volume"            {   "value"     "5.00000"  }
                 }
             }
         }
