@@ -96,12 +96,16 @@ function FrostivusGameMode:OnThink()
 
 			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_GOODGUYS, "ping_location", { spawn_location = ward_dire:GetAbsOrigin() } )
 			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_BADGUYS, "ping_location", { spawn_location = ward_radiant:GetAbsOrigin() } )
+
+			CustomGameEventManager:Send_ServerToAllClients( "emit_sound", {sound = "objective_lakes"} );
 		elseif currentDay == 9 then
 			tree_radiant:RemoveModifierByName("modifier_invulnerable");
 			tree_dire:RemoveModifierByName("modifier_invulnerable");
 
 			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_GOODGUYS, "ping_location", { spawn_location = tree_dire:GetAbsOrigin() } )
 			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_BADGUYS, "ping_location", { spawn_location = tree_radiant:GetAbsOrigin() } )
+
+			CustomGameEventManager:Send_ServerToAllClients( "emit_sound", {sound = "objective_forest"} );
         elseif currentDay == 25 then
 			FrostivusGameMode:SpawnRoshan()
 			--GameRules:AddMinimapDebugPoint(1, roshan_radiant:GetCenter(), 255, 255, 255, 500, 3.0)
@@ -109,6 +113,8 @@ function FrostivusGameMode:OnThink()
 			--print(roshan_radiant:GetAbsOrigin())
 			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_GOODGUYS, "ping_location", { spawn_location = roshan_dire:GetAbsOrigin() } )
 			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_BADGUYS, "ping_location", { spawn_location = roshan_radiant:GetAbsOrigin() } )
+
+			CustomGameEventManager:Send_ServerToAllClients( "emit_sound", {sound = "frostivus_awaits_you"} );
 			--(nTeamID, hEntity, nXCoord, nYCoord, nEventType, nEventDuration)
         end
 	elseif GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
@@ -276,7 +282,7 @@ function FrostivusGameMode:OnGameRulesStateChange()
 			end		
 		end
 
-		CustomGameEventManager:Send_ServerToAllClients( "emit_sound", {sound = "frostivus_awaits_you"} );
+		CustomGameEventManager:Send_ServerToAllClients( "emit_sound", {sound = "objective_mountains"} );
 	elseif nNewState == DOTA_GAMERULES_STATE_STRATEGY_TIME then
 		--Add Instruction Panel call here
 		FrostivusGameMode:ForceAssignHeroes()
