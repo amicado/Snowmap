@@ -50,7 +50,7 @@
 
 		<Label id="OutroHeader" class="Header" text="#frostivus_game_info_outro_header" />
 		<Image id="OutroImage" src="file://{images}/custom_game/hf.png" />
-		<Label id="OutroText" text="#frostivus_game_info_outro_text" />
+		<Label id="OutroText" html="true" text="#frostivus_game_info_outro_text" />
 
 	</Panel>
 </root>

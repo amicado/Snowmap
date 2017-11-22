@@ -23,7 +23,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"precache"
 		{
-			"particle"		"particles/ui/ui_slark_goalburst_water.vpcf"
+			"particle"		"particles/punch_time_cast_present.vpcf"
 			"particle" 		"particles/punch_time_cast.vpcf"
 		}
 		
@@ -33,7 +33,7 @@
 			"01"
 			{
 				"var_type" "FIELD_INTEGER"
-				"duration" "2"
+				"duration" "15"
 			}
 			"02"
 			{
@@ -71,7 +71,7 @@
 			
 			"FireEffect"
 			{
-				"EffectName"		"particles/ui/ui_slark_goalburst_water.vpcf" //played on the present
+				"EffectName"		"particles/punch_time_cast_present.vpcf" //played on the present
 				"EffectAttachType"	"follow_overhead"
 				"Target"			"CASTER"
 			}

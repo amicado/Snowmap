@@ -5,7 +5,7 @@
 	"frostivus_game_info_header_concept"			"Description:"
 	"frostivus_brief_description"					"It's Christmas soon and Rosha Claus is preparing himself to deliver his presents. Unfortunately, a villain is trying to sabotage the graceful event by pretending to be Rosha Claus himself."
 	"frostivus_game_info_header_how_to_play"		"How To Play:"
-    "frostivus_game_info_time"		                "Every minute, another day passes and different objectives become available. Destroy the objectives of your enemies and prevent them from doing so on yours to get an advantage in the final battle. When Rosha Claus and the villain arrive on Christmas, it is your job to overpower the wrong Rosha."
+    "frostivus_game_info_time"		                "Every 30 seconds, another day passes and different objectives become available. Destroy the objectives of your enemies and prevent them from doing so on yours to get an advantage in the final battle. When Rosha Claus and the villain arrive on Christmas, it is your job to overpower the wrong Rosha."
 	"frostivus_game_info_header_location"		    "Objectives:"
 	"frostivus_game_info_location"		   			"There are three locations, available one after another. On Day 25, Rosha Claus will come and fight with you at the mountains."
     "frostivus_game_info_location1"		            "Presents at the Mountains (Day 1)"
@@ -17,6 +17,6 @@
 	"frostivus_game_info_location4"		            "Rosha Claus at the Mountains (Day 25)"
 	"frostivus_game_info_location4_text"		    "When you kill the enemies Rosha Claus, you win the game."
 	"frostivus_game_info_outro_header"				"And The Most Important Thing:"
-	"frostivus_game_info_outro_text"				"by Thomas Anderl and Alexander Böhm"
+	"frostivus_game_info_outro_text"				"by Thomas Anderl and Alexander B&ouml;hm"
 }
 
