@@ -1,6 +1,6 @@
 -- Generated from template
 
-_G.COUNTDOWNTIMERVALUE = 5
+_G.COUNTDOWNTIMERVALUE = 30
 _G.nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
 _G.currentDay = 0
 
@@ -53,7 +53,7 @@ function FrostivusGameMode:InitGameMode()
 	GameRules:SetCustomGameEndDelay( 0 )
 	GameRules:SetCustomVictoryMessageDuration( 10 )
 	GameRules:GetGameModeEntity():SetCameraDistanceOverride(1500);
-	GameRules:SetPreGameTime( 10 )
+	GameRules:SetPreGameTime( 15 )
 	GameRules:SetStrategyTime( 0.0 )
 	GameRules:SetShowcaseTime( 0.0 )
 	GameRules:SetStartingGold(1000)
