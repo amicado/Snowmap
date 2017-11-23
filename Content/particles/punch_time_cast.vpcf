@@ -18,7 +18,7 @@
 			m_bDisableZBuffering = true
 			m_flAddSelfAmount = 1.0
 			m_bSaturateColorPreAlphaBlend = false
-			m_hTexture = resource:"materials/particle/tuskpunch/rubickpunch.vtex"
+			m_hTexture = resource:"materials/punch_time_texture.vtex"
 		},
 	]
 	m_Operators = 
@@ -29,19 +29,21 @@
 		{
 			_class = "C_OP_InterpolateRadius"
 			m_flEndTime = 0.15
-			m_flStartScale = 6.0
+			m_flStartScale = 12.0
 			m_flBias = 0.95
+			m_flEndScale = 8.0
 		},
 		{
 			_class = "C_OP_ColorInterpolate"
-			m_ColorFade = [ 128, 0, 0, 255 ]
+			m_ColorFade = [ 236, 236, 236, 255 ]
 			m_flFadeEndTime = 0.5
 		},
 		{
 			_class = "C_OP_InterpolateRadius"
 			m_flStartTime = 0.75
-			m_flEndScale = 0.5
+			m_flEndScale = 3.0
 			m_flBias = 0.25
+			m_flStartScale = 8.0
 		},
 		{
 			_class = "C_OP_FadeOutSimple"
@@ -75,8 +77,8 @@
 		},
 		{
 			_class = "C_INIT_PositionOffset"
-			m_OffsetMin = [ 0.0, 0.0, 200.0 ]
-			m_OffsetMax = [ 0.0, 0.0, 200.0 ]
+			m_OffsetMin = [ 0.0, 0.0, -100.0 ]
+			m_OffsetMax = [ 0.0, 0.0, -100.0 ]
 		},
 		{
 			_class = "C_INIT_RemapCPtoScalar"

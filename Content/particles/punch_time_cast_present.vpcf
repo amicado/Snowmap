@@ -21,8 +21,8 @@
 	[
 		{
 			_class = "C_OP_BasicMovement"
-			m_Gravity = [ 0.0, 0.0, -300.0 ]
-			m_fDrag = -0.444
+			m_Gravity = [ 0.0, 0.0, -200.0 ]
+			m_fDrag = -0.644
 		},
 		{
 			_class = "C_OP_Decay"
@@ -35,7 +35,7 @@
 			_class = "C_OP_InterpolateRadius"
 			m_flStartScale = 0.25
 			m_flBias = 0.75
-			m_flEndScale = 4.0
+			m_flEndScale = 10.0
 		},
 		{
 			_class = "C_OP_RampScalarLinearSimple"
@@ -52,8 +52,7 @@
 		},
 		{
 			_class = "C_OP_ColorInterpolate"
-			m_ColorFade = [ 56, 83, 136, 255 ]
-			m_bDisableOperator = true
+			m_ColorFade = [ 139, 0, 139, 255 ]
 		},
 		{
 			_class = "C_OP_PositionLock"
@@ -107,7 +106,7 @@
 		},
 		{
 			_class = "C_INIT_CreateWithinSphere"
-			m_fRadiusMax = 20.0
+			m_fRadiusMax = 50.0
 			m_LocalCoordinateSystemSpeedMin = [ 0.0, -100.0, 200.0 ]
 			m_LocalCoordinateSystemSpeedMax = [ 0.0, 100.0, 300.0 ]
 		},
