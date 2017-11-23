@@ -17,16 +17,18 @@ function UpdateTimer( data )
 	//	timerText += "0";
 	//}
 	//timerText += sec;
-
 	var timerText = "";
-	timerText += data.timer_minute_10;
-	timerText += data.timer_minute_01;
-	timerText += ":";
-	timerText += data.timer_second_10;
-	timerText += data.timer_second_01;
-
+	if(data == null || data.timer_minute_10 == null){
+		timerText = "Xmas"
+	}else{
+		var timerText = "";
+		timerText += data.timer_minute_10;
+		timerText += data.timer_minute_01;
+		timerText += ":";
+		timerText += data.timer_second_10;
+		timerText += data.timer_second_01;	
+	}
 	$( "#Timer" ).text = timerText;
-
 	//$.Schedule( 0.1, UpdateTimer );
 }
 

@@ -32,7 +32,7 @@
  
 			// Bounds
 			//----------------------------------------------------------------
-			"BoundsHullName"			"DOTA_HULL_SIZE_TOWER"			// Hull type used for navigation/locomotion.
+			"BoundsHullName"			"DOTA_HULL_SIZE_BUILDING"			// Hull type used for navigation/locomotion.
 			"ProjectileCollisionSize"	"50"
 			"RingRadius"				"130"
 			"HealthBarOffset"			"260"
@@ -163,9 +163,10 @@
 		"ConsideredHero"			"1"
 		"CanBeDominated"               "0"
 		"DisableResistance"            "100.0"
+		"IsAncient"                    "1"
 
 		// Armor
-		//----------------------------------------------------------------
+		//-----------------------------------ü-----------------------------
 		"ArmorPhysical"				"40"			// Physical protection.
 		"MagicalResistance"			"75"		// Magical protection (percentage).
 
@@ -178,7 +179,7 @@
 		"AttackRate"				"1"			// Speed of attack.
 		"AttackAnimationPoint"		"0.3"		// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"800"		// Range within a target can be acquired.
-		"AttackRange"				"250"		// Range within a target can be attacked.
+		"AttackRange"				"300"		// Range within a target can be attacked.
 		"ProjectileModel"			"particles/base_attacks/ranged_goodguy.vpcf" // Particle system model for projectile.
 		"ProjectileSpeed"			"1000"		// Speed of projectile.
 

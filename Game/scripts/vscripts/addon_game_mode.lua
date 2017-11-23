@@ -87,6 +87,10 @@ end
 function FrostivusGameMode:OnThink()
 	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS and GameRules:IsGamePaused() == false then
 
+		if currentDay == 25 then
+			FrostivusGameMode:GiveGold()
+			return nil;
+		end
 		local currentDay = CountdownTimer()
 
 		FrostivusGameMode:GiveGold()
@@ -116,6 +120,7 @@ function FrostivusGameMode:OnThink()
 			CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_BADGUYS, "ping_location", { spawn_location = roshan_radiant:GetAbsOrigin() } )
 
 			CustomGameEventManager:Send_ServerToAllClients( "emit_sound", {sound = "frostivus_awaits_you"} );
+			CustomGameEventManager:Send_ServerToAllClients( "countdown", {} )
 			--(nTeamID, hEntity, nXCoord, nYCoord, nEventType, nEventDuration)
         end
 	elseif GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then

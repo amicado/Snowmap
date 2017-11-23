@@ -33,12 +33,12 @@
 			"01"
 			{
 				"var_type" "FIELD_INTEGER"
-				"duration" "30"
+				"duration" "2"
 			}
 			"02"
 			{
 				"var_type" "FIELD_INTEGER"
-				"radius" "600"
+				"radius" "1000"
 			}
 			"03"
 			{
@@ -75,12 +75,7 @@
 				"EffectAttachType"	"follow_overhead"
 				"Target"			"CASTER"
 			}
-			
-			"FireSound"
-			{
-				"EffectName"	"punch_time"
-				"Target"		"CASTER"
-			}
+					
 		}
 
 		"Modifiers"
@@ -97,6 +92,15 @@
 				{
 					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_hp_regen"
 					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%bonus_mana_regen"
+				}
+
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"	"punch_time"
+						"Target"		"CASTER"
+					}
 				}
 				
 			}
