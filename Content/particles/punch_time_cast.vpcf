@@ -5,7 +5,7 @@
 	m_nMaxParticles = 1
 	m_flConstantRadius = 100.0
 	m_flConstantLifespan = 1.75
-	m_ConstantColor = [ 119, 161, 255, 255 ]
+	m_ConstantColor = [ 128, 0, 0, 255 ]
 	m_Renderers = 
 	[
 		{
@@ -29,21 +29,20 @@
 		{
 			_class = "C_OP_InterpolateRadius"
 			m_flEndTime = 0.15
-			m_flStartScale = 12.0
+			m_flStartScale = 5.0
 			m_flBias = 0.95
-			m_flEndScale = 8.0
+			m_flEndScale = 4.0
 		},
 		{
 			_class = "C_OP_ColorInterpolate"
 			m_ColorFade = [ 236, 236, 236, 255 ]
-			m_flFadeEndTime = 0.5
+			m_flFadeEndTime = 0.3
 		},
 		{
 			_class = "C_OP_InterpolateRadius"
 			m_flStartTime = 0.75
-			m_flEndScale = 3.0
 			m_flBias = 0.25
-			m_flStartScale = 8.0
+			m_flStartScale = 4.0
 		},
 		{
 			_class = "C_OP_FadeOutSimple"
@@ -77,8 +76,8 @@
 		},
 		{
 			_class = "C_INIT_PositionOffset"
-			m_OffsetMin = [ 0.0, 0.0, -100.0 ]
-			m_OffsetMax = [ 0.0, 0.0, -100.0 ]
+			m_OffsetMin = [ 0.0, 80.0, 50.0 ]
+			m_OffsetMax = [ 0.0, 80.0, 50.0 ]
 		},
 		{
 			_class = "C_INIT_RemapCPtoScalar"
@@ -110,7 +109,7 @@
 			m_ChildRef = resource:"particles/units/heroes/hero_tusk/tusk_walruspunch_txt_glow.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_tusk/tusk_rubickpunch_hit_embers.vpcf"
+			m_ChildRef = resource:"particles/tusk_rubickpunch_hit_embers_punch.vpcf"
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_tusk/tusk_rubickpunch_start_hit.vpcf"
