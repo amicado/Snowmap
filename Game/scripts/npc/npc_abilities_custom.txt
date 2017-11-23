@@ -8,7 +8,7 @@
 		// General
 		//-------------------------------------------------------------------------------------
 		"BaseClass"        "ability_datadriven" 
-		"AbilityBehavior"  "DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_TARGET" // vllt aoe ?
+		"AbilityBehavior"  "DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_TARGET"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ALLIES_YES"
 		"AbilityTextureName"			"punsh_cup"
 
@@ -81,7 +81,7 @@
 		"Modifiers"
 		{
 			"modifier_drinking_punch"
-			{
+			{	
 				"Duration"	"%duration"
 			
 				"EffectName"		"particles/punch_time_cast.vpcf" //played on the hero

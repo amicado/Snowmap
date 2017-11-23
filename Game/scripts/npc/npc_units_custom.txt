@@ -26,7 +26,7 @@
  
 			// Armor
 			//----------------------------------------------------------------
-			"ArmorPhysical"				"15"		// Physical protection.
+			"ArmorPhysical"				"20"		// Physical protection.
 			"MagicalResistance"			"70"			// Magical protection.
  
  
@@ -74,7 +74,7 @@
  
 			// Armor
 			//----------------------------------------------------------------
-			"ArmorPhysical"				"20"		// Physical protection.
+			"ArmorPhysical"				"30"		// Physical protection.
 			"MagicalResistance"			"75"			// Magical protection.
  
 			// Bounds
@@ -211,6 +211,11 @@
 		//----------------------------------------------------------------
 		"VisionDaytimeRange"		"1400"		// Range of vision during day light.
 		"VisionNighttimeRange"		"1400"		// Range of vision at night time.
+		
+		"creature"
+		{
+			"DisableClumpingBehavior"   "1"
+		}
 
 	}	
 
@@ -223,18 +228,18 @@
 		"SoundSet"					"Greevil"					// Name of sound set.
 		"ModelScale"				"1"
 		"Level"						"1"
-		"ConsideredHero"			"1"
+		"ConsideredHero"			"0"
 		
 		// Armor
 		//----------------------------------------------------------------
-		"ArmorPhysical"				"0"			// Physical protection.
+		"ArmorPhysical"				"10"			// Physical protection.
 		"MagicalResistance"			"90"		// Magical protection (percentage).
 
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"30"		// Damage range min.
-		"AttackDamageMax"			"30"		// Damage range max.
+		"AttackDamageMin"			"50"		// Damage range min.
+		"AttackDamageMax"			"50"		// Damage range max.
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
 		"AttackRate"				"1"			// Speed of attack.
 		"AttackAnimationPoint"		"0.3"		// Normalized time in animation cycle to attack.
@@ -263,7 +268,7 @@
 
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealth"				"500"		// Base health.
+		"StatusHealth"				"1000"		// Base health.
 		"StatusHealthRegen"			"0"		// Health regeneration rate.
 		"StatusMana"				"250"		// Base mana.
 		"StatusManaRegen"			"5"			// Mana regeneration rate.

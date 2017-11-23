@@ -12,13 +12,3 @@ function Leave_Spawn(trigger)
 	CustomGameEventManager:Send_ServerToPlayer(trigger.activator:GetPlayerOwner(), "emit_sound", {sound = "spawn_trigger"} );
 	--EmitAnnouncerSound("spawn_trigger")
 end
-
-function PresentAutoCast()
-	if present_radiant ~= nil and present_radiant:IsNull() == false then
-		present_radiant:GetAbilityByIndex(0):CastAbility();
-	end
-
-	if present_dire ~= nil and present_dire:IsNull() == false then
-		present_dire:GetAbilityByIndex(0):CastAbility();
-	end
-end

@@ -53,7 +53,7 @@ function FrostivusGameMode:InitGameMode()
 	GameRules:SetCustomGameEndDelay( 0 )
 	GameRules:SetCustomVictoryMessageDuration( 10 )
 	GameRules:GetGameModeEntity():SetCameraDistanceOverride(1500);
-	GameRules:SetPreGameTime( 15 )
+	GameRules:SetPreGameTime( 20 )
 	GameRules:SetStrategyTime( 0.0 )
 	GameRules:SetShowcaseTime( 0.0 )
 	GameRules:SetStartingGold(1000)
@@ -87,10 +87,7 @@ end
 function FrostivusGameMode:OnThink()
 	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS and GameRules:IsGamePaused() == false then
 
-		if currentDay == 25 then
-			FrostivusGameMode:GiveGold()
-			return nil;
-		end
+		FrostivusGameMode:PresentAutoCast()
 		local currentDay = CountdownTimer()
 
 		FrostivusGameMode:GiveGold()
@@ -127,6 +124,17 @@ function FrostivusGameMode:OnThink()
 		return nil
 	end
 	return 1
+end
+
+
+function FrostivusGameMode:PresentAutoCast()
+	if present_radiant ~= nil and present_radiant:IsNull() == false then
+		present_radiant:GetAbilityByIndex(0):CastAbility();
+	end
+
+	if present_dire ~= nil and present_dire:IsNull() == false then
+		present_dire:GetAbilityByIndex(0):CastAbility();
+	end
 end
 
 function FrostivusGameMode:GiveGold()

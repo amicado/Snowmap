@@ -5,7 +5,16 @@ function CountdownTimer()
         CustomGameEventManager:Send_ServerToAllClients( "start_timer", {} )
     end
     nCOUNTDOWNTIMER = nCOUNTDOWNTIMER - 1
+
     local t = nCOUNTDOWNTIMER
+
+    if (currentDay >= 25 and t <= 0) then
+        IncreaseDay()
+        nCOUNTDOWNTIMER = COUNTDOWNTIMERVALUE
+        return -1;
+    elseif (currentDay >= 25 and t > 0) then
+        return -1
+    end
     --print( t )
     local minutes = math.floor(t / 60)
     local seconds = t - (minutes * 60)
@@ -55,12 +64,12 @@ function IncreaseDay()
     end
     
 
-    if(tree_dire == nil and currentDay < 25) then
+    if(tree_dire == nil and currentDay ~= 25) then
         --print("Spawning Greevling on dire");
         local point1 = Entities:FindByName( nil, "santa_spawn_radiant"):GetAbsOrigin()
         CreateUnitByName("npc_dota_creature_greevil", point1, true, nil, nil, DOTA_TEAM_GOODGUYS)
         --GameRules:AddMinimapDebugPointForTeam(DOTA_TEAM_BADGUYS, unit:GetCenter(), 255, 255, 255, 1000, 2.0) -- (PlayerID, position, R, G, B, SizeofDot, Duration)
-    elseif(tree_radiant == nil and currentDay < 25) then
+    elseif(tree_radiant == nil and currentDay ~= 25) then
         --print("Spawning Greevling on radiant");
         
         local point2 = Entities:FindByName( nil, "santa_spawn_dire"):GetAbsOrigin()
