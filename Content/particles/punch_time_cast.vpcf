@@ -76,8 +76,8 @@
 		},
 		{
 			_class = "C_INIT_PositionOffset"
-			m_OffsetMin = [ 0.0, 80.0, 50.0 ]
-			m_OffsetMax = [ 0.0, 80.0, 50.0 ]
+			m_OffsetMin = [ 0.0, 250.0, -50.0 ]
+			m_OffsetMax = [ 0.0, 250.0, -50.0 ]
 		},
 		{
 			_class = "C_INIT_RemapCPtoScalar"
